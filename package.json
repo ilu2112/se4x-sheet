@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --hot --open",
+    "start": "webpack-dev-server --hot --open --host 0.0.0.0",
     "build": "webpack",
     "lint": "eslint src"
   },
