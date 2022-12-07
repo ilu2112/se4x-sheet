@@ -1,7 +1,7 @@
 import React from "react";
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
-import Sheet from "./components/Sheet";
+import MasterSheet from "./components/MasterSheet";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -15,7 +15,7 @@ class App extends React.Component {
     return (
       <div>
         <GlobalStyle />
-        <Sheet />
+        <MasterSheet />
       </div>
     );
   }
