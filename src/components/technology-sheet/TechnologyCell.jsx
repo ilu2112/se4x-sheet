@@ -1,3 +1,4 @@
+import { observer } from "mobx-react";
 import React from "react";
 import styled from "styled-components";
 import TechLevel from "./TechLevel";
@@ -29,17 +30,25 @@ const Wrapper = styled.div`
   }
 `;
 
+@observer
 class TechnologyCell extends React.Component {
   render() {
+    const {
+      name,
+      techLevels,
+    } = this.props;
     return (
       <Wrapper className="technology-cell">
         <div className="tech-title">
-          Terraforming
+          { name }
         </div>
         <div className="tech-levels">
-          <TechLevel />
-          <TechLevel />
-          <TechLevel />
+          {techLevels.map(props =>
+            <TechLevel
+              key={ props.level }
+              { ...props }
+            />
+          )}
         </div>
       </Wrapper>
     );

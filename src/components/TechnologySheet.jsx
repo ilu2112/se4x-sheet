@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import { observer } from "mobx-react";
+
 import TechnologyCell from "./technology-sheet/TechnologyCell";
+import { sheetStore } from "../models/store";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -41,36 +44,19 @@ const Title = styled.div`
   background: #00698c;
 `;
 
+@observer
 class TechnologySheet extends React.Component {
   render() {
+    const { technologies } = sheetStore;
     return (
       <Wrapper>
         <Title>Tech</Title>
-        <TechnologyCell />
-        <TechnologyCell />
-        <TechnologyCell />
-        <TechnologyCell />
-        <TechnologyCell />
-        <TechnologyCell />
-        <TechnologyCell />
-        <TechnologyCell />
-        <TechnologyCell />
-        <TechnologyCell />
-
-        <TechnologyCell />
-        <TechnologyCell />
-        <TechnologyCell />
-        <TechnologyCell />
-        <TechnologyCell />
-        <TechnologyCell />
-        <TechnologyCell />
-        <TechnologyCell />
-        <TechnologyCell />
-        <TechnologyCell />
-
-        <TechnologyCell />
-        <TechnologyCell />
-        <TechnologyCell />
+        {technologies.map(props => 
+          <TechnologyCell
+            key={ props.id }
+            { ...props }
+          />
+        )}
       </Wrapper>
     );
   }
