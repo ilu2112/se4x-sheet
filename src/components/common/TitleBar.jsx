@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   border-bottom: 1px solid #000;;
   color: #FFF;
   background: #00698c;
+  user-select: none;
 `;
 
 class TitleBar extends React.Component {

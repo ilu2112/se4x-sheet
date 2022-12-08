@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   align-items: center;
   padding: 0 8px;
   justify-content: space-between;
+  user-select: none;
 
   &:nth-of-type(3n + 1) {
     border-right: none;
