@@ -54,6 +54,7 @@ export default [
         cost: 25,
       },
       {
+        level: 4,
         isPlaceholder: true,
       },
     ],
@@ -103,9 +104,11 @@ export default [
         cost: 10,
       },
       {
+        level: 5,
         isPlaceholder: true,
       },
       {
+        level: 6,
         isPlaceholder: true,
       },
     ],
@@ -128,6 +131,7 @@ export default [
         cost: 15,
       },
       {
+        level: 4,
         isPlaceholder: true,
       },
     ],
@@ -173,12 +177,15 @@ export default [
         cost: 25,
       },
       {
+        level: 4,
         isPlaceholder: true,
       },
       {
+        level: 5,
         isPlaceholder: true,
       },
       {
+        level: 6,
         isPlaceholder: true,
       },
     ],
@@ -201,6 +208,7 @@ export default [
         cost: 25,
       },
       {
+        level: 3,
         isPlaceholder: true,
       },
     ],
@@ -246,12 +254,15 @@ export default [
         cost: 15,
       },
       {
+        level: 4,
         isPlaceholder: true,
       },
       {
+        level: 5,
         isPlaceholder: true,
       },
       {
+        level: 6,
         isPlaceholder: true,
       },
     ],
@@ -274,6 +285,7 @@ export default [
         cost: 30,
       },
       {
+        level: 3,
         isPlaceholder: true,
       },
     ],
@@ -350,6 +362,7 @@ export default [
         cost: 20,
       },
       {
+        level: 3,
         isPlaceholder: true,
       },
     ],
@@ -399,9 +412,11 @@ export default [
         cost: 25,
       },
       {
+        level: 5,
         isPlaceholder: true,
       },
       {
+        level: 6,
         isPlaceholder: true,
       },
     ],
@@ -443,6 +458,7 @@ export default [
         cost: 30,
       },
       {
+        level: 2,
         isPlaceholder: true,
       }
     ],
@@ -469,12 +485,15 @@ export default [
         cost: 20,
       },
       {
+        level: 4,
         isPlaceholder: true,
       },
       {
+        level: 5,
         isPlaceholder: true,
       },
       {
+        level: 6,
         isPlaceholder: true,
       },
     ],
@@ -516,6 +535,7 @@ export default [
         cost: 10,
       },
       {
+        level: 2,
         isPlaceholder: true,
       },
     ],
@@ -539,9 +559,11 @@ export default [
         cost: 10,
       },
       {
+        level: 2,
         isPlaceholder: true,
       },
       {
+        level: 3,
         isPlaceholder: true,
       },
     ],
@@ -560,6 +582,7 @@ export default [
         cost: 15,
       },
       {
+        level: 2,
         isPlaceholder: true,
       },
     ],

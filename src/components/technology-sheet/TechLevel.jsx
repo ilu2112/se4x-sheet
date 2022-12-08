@@ -60,8 +60,10 @@ class TechLevel extends React.Component {
         isPlaceholder={ isPlaceholder }
         onClick={ toggleState }
       >
-        <div className='tech-level'>{ level }</div>
-        {cost > 0 &&
+        {!isPlaceholder && 
+          <div className='tech-level'>{ level }</div>
+        }
+        {cost > 0 && !isPlaceholder &&
           <div className='tech-cost'>{ cost }</div>
         }
       </Wrapper>

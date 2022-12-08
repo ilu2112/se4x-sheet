@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { observer } from "mobx-react";
 
+import TitleBar from "./common/TitleBar";
 import TechnologyCell from "./technology-sheet/TechnologyCell";
 import { sheetStore } from "../models/store";
 
@@ -13,6 +14,10 @@ const Wrapper = styled.div`
   grid-template-rows: repeat(9, 1fr);
   box-sizing: border-box;
   border: 1px solid #000;
+
+  .title-bar {
+    grid-column: 1 / 14;
+  }
 
   .technology-cell {
     &:nth-of-type(3n - 1) {
@@ -29,28 +34,13 @@ const Wrapper = styled.div`
   }
 `;
 
-const Title = styled.div`
-  grid-column: 1 / 14;
-  display: flex;
-  align-items: center;
-  font-size: 18px;
-  letter-spacing: 0.75px;
-  font-style: italic;
-  justify-content: center;
-  font-weight: 700;
-  box-sizing: border-box;
-  border-bottom: 1px solid #000;;
-  color: #FFF;
-  background: #00698c;
-`;
-
 @observer
 class TechnologySheet extends React.Component {
   render() {
     const { technologies } = sheetStore;
     return (
       <Wrapper>
-        <Title>Tech</Title>
+        <TitleBar title="Tech" />
         {technologies.map(props => 
           <TechnologyCell
             key={ props.id }
