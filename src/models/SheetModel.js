@@ -3,6 +3,7 @@ import technologiesConfigs from "../config/technologies";
 import ProductionColumnModel from "./ProductionColumnModel";
 import TechnologyModel from "./TechnologyModel";
 import settings from "../config/settings";
+import { TECH_LEVEL_STATE } from "./enums";
 
 export default class SheetModel {
   @observable technologies = [];
@@ -16,6 +17,7 @@ export default class SheetModel {
     this.moveToPrevProductionColumn = this.moveToPrevProductionColumn.bind(this);
     this.moveToNextProductionColumn = this.moveToNextProductionColumn.bind(this);
     this.fetchPrevColumnProduction = this.fetchPrevColumnProduction.bind(this);
+    this.acceptAllTechLevels = this.acceptAllTechLevels.bind(this);
   }
 
   @action
@@ -64,7 +66,6 @@ export default class SheetModel {
     this.activeProductionColumn.isActive = true;
   }
 
-
   @action
   fetchPrevColumnProduction() {
     const { phase } = this.activeProductionColumn;
@@ -76,5 +77,16 @@ export default class SheetModel {
     this.activeProductionColumn.msPipelineCP = prevProductionColumn.msPipelineCP;
     this.activeProductionColumn.industrialCenterCP = prevProductionColumn.industrialCenterCP;
     this.activeProductionColumn.researchCenterRP = prevProductionColumn.researchCenterRP;
+  }
+
+  @action
+  acceptAllTechLevels() {
+    for (let technology of this.technologies) {
+      for (let techLevel of technology.techLevels) {
+        if (techLevel.state === TECH_LEVEL_STATE.MARKED) {
+          techLevel.state = TECH_LEVEL_STATE.OWNED;
+        }
+      }
+    }
   }
 }

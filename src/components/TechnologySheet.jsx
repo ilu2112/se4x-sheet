@@ -1,8 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { observer } from "mobx-react";
+import {
+  BsFillCheckSquareFill,
+} from "react-icons/bs";
 
 import TitleBar from "./common/TitleBar";
+import IconButton from "./common/IconButton";
 import TechnologyCell from "./technology-sheet/TechnologyCell";
 import { sheetStore } from "../models/store";
 
@@ -37,10 +41,18 @@ const Wrapper = styled.div`
 @observer
 class TechnologySheet extends React.Component {
   render() {
-    const { technologies } = sheetStore;
+    const {
+      technologies,
+      acceptAllTechLevels,
+    } = sheetStore;
     return (
       <Wrapper>
-        <TitleBar title="Tech" />
+        <TitleBar title="Tech">
+          <IconButton
+            icon={ <BsFillCheckSquareFill /> }
+            onClick={ acceptAllTechLevels }
+          />
+        </TitleBar>
         {technologies.map(props => 
           <TechnologyCell
             key={ props.id }
