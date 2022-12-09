@@ -5,6 +5,7 @@ import { observer } from "mobx-react";
 import {
   BsFillArrowRightSquareFill,
   BsFillArrowLeftSquareFill,
+  BsSquareHalf,
 } from "react-icons/bs";
 
 import TitleBar from "./common/TitleBar";
@@ -12,7 +13,6 @@ import IconButton from "./common/IconButton";
 import ProductionLabel from "./production-sheet/ProductionLabel";
 import ProductionColumn from "./production-sheet/ProductionColumn";
 import { sheetStore } from "../models/store";
-import settings from "../config/settings";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -66,6 +66,7 @@ class ProductionSheet extends React.Component {
       productionColumns,
       moveToPrevProductionColumn,
       moveToNextProductionColumn,
+      fetchPrevColumnProduction,
     } = sheetStore;
     return (
       <Wrapper>
@@ -73,6 +74,10 @@ class ProductionSheet extends React.Component {
           <IconButton
             icon={ <BsFillArrowLeftSquareFill /> }
             onClick={ moveToPrevProductionColumn }
+          />
+          <IconButton
+            icon={ <BsSquareHalf /> }
+            onClick={ fetchPrevColumnProduction }
           />
           <IconButton
             icon={ <BsFillArrowRightSquareFill /> }

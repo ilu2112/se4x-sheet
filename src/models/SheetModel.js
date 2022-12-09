@@ -15,6 +15,7 @@ export default class SheetModel {
     this.reset = this.reset.bind(this);
     this.moveToPrevProductionColumn = this.moveToPrevProductionColumn.bind(this);
     this.moveToNextProductionColumn = this.moveToNextProductionColumn.bind(this);
+    this.fetchPrevColumnProduction = this.fetchPrevColumnProduction.bind(this);
   }
 
   @action
@@ -31,6 +32,10 @@ export default class SheetModel {
       this.productionColumns.push(
         new ProductionColumnModel({ phase: i })
       );
+    }
+
+    for (let i = 1; i <= settings.NO_OF_PHASES - 1; i++) {
+      this.productionColumns[i - 1].nextProductionColumn = this.productionColumns[i];
     }
 
     this.productionColumns[0].isActive = true;
@@ -57,5 +62,19 @@ export default class SheetModel {
     this.activeProductionColumn.isActive = false;
     this.activeProductionColumn = this.productionColumns[phase];
     this.activeProductionColumn.isActive = true;
+  }
+
+
+  @action
+  fetchPrevColumnProduction() {
+    const { phase } = this.activeProductionColumn;
+    if (phase === 1) {
+      return;
+    }
+    const prevProductionColumn = this.productionColumns[phase - 2];
+    this.activeProductionColumn.colonyCP = prevProductionColumn.colonyCP;
+    this.activeProductionColumn.msPipelineCP = prevProductionColumn.msPipelineCP;
+    this.activeProductionColumn.industrialCenterCP = prevProductionColumn.industrialCenterCP;
+    this.activeProductionColumn.researchCenterRP = prevProductionColumn.researchCenterRP;
   }
 }

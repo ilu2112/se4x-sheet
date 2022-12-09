@@ -22,6 +22,8 @@ export default class ProductionColumnModel {
 
   @observable isActive;
 
+  nextProductionColumn;
+
   constructor({
     phase,
     cpCarriedOver,
@@ -69,5 +71,35 @@ export default class ProductionColumnModel {
   @action
   updateField(fieldName, value) {
     this[fieldName] = parseInt(value, 10) || 0;
+    this.recalculateTotals();
+    this.populateNextColumn()
+  }
+
+  recalculateTotals() {
+    this.remainingCP = 0
+      + this.cpCarriedOver
+      + this.colonyCP
+      + this.mineralCP
+      + this.msPipelineCP
+      + this.industrialCenterCP
+      - this.maintenance
+      - this.turnOrderBid
+      - this.cpConvertedToRP
+      - this.purchases;   
+    this.remainingRP = 0
+      + this.rpCarriedOver
+      + this.researchCenterRP
+      + this.cpConvertedToRP
+      - this.technologySpending;
+  }
+
+  populateNextColumn() {
+    if (this.nextProductionColumn) {
+      this.nextProductionColumn.cpCarriedOver = this.remainingCP - this.cpSpentOnUpgrades;
+      this.nextProductionColumn.rpCarriedOver = this.remainingRP;
+      this.nextProductionColumn.maintenance = this.maintenance - this.maintenanceDecrease + this.maintenanceIncrease;
+      this.nextProductionColumn.recalculateTotals();
+      this.nextProductionColumn.populateNextColumn();
+    } 
   }
 }
