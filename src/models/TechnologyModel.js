@@ -9,13 +9,13 @@ export default class TechnologyModel {
   constructor({
     id,
     name,
-    levels,
+    techLevels,
   }) {
     this.id = id;
     this.name = name;
 
     this.techLevels = [];
-    for (let levelParams of levels) {
+    for (let levelParams of techLevels) {
       this.techLevels.push(new TechLevelModel(levelParams));
     }
   }

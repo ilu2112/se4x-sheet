@@ -4,7 +4,7 @@ export default [
   {
     id: 1,
     name: 'Ship Size',
-    levels: [
+    techLevels: [
       {
         level: 1,
         cost: 0,
@@ -39,7 +39,7 @@ export default [
   { 
     id: 2,
     name: 'Ship Yard',
-    levels: [
+    techLevels: [
       {
         level: 1,
         cost: 0,
@@ -62,7 +62,7 @@ export default [
   {
     id: 3,
     name: 'Military Acad.',
-    levels: [
+    techLevels: [
       {
         level: 0,
         cost: 0,
@@ -81,7 +81,7 @@ export default [
   {
     id: 4,
     name: 'Attack',
-    levels: [
+    techLevels: [
       {
         level: 0,
         cost: 0,
@@ -116,7 +116,7 @@ export default [
   {
     id: 5,
     name: 'Ground',
-    levels: [
+    techLevels: [
       {
         level: 1,
         cost: 0,
@@ -139,7 +139,7 @@ export default [
   {
     id: 6,
     name: 'Boarding',
-    levels: [
+    techLevels: [
       {
         level: 0,
         cost: 0,
@@ -158,7 +158,7 @@ export default [
   {
     id: 7,
     name: 'Defense',
-    levels: [
+    techLevels: [
       {
         level: 0,
         cost: 0,
@@ -193,7 +193,7 @@ export default [
   {
     id: 8,
     name: 'Terraforming',
-    levels: [
+    techLevels: [
       {
         level: 0,
         cost: 0,
@@ -216,7 +216,7 @@ export default [
   {
     id: 9,
     name: 'Security',
-    levels: [
+    techLevels: [
       {
         level: 0,
         cost: 0,
@@ -235,7 +235,7 @@ export default [
   {
     id: 10,
     name: 'Tactics',
-    levels: [
+    techLevels: [
       {
         level: 0,
         cost: 0,
@@ -270,7 +270,7 @@ export default [
   {
     id: 11,
     name: 'Cloaking',
-    levels: [
+    techLevels: [
       {
         level: 0,
         cost: 0,
@@ -293,7 +293,7 @@ export default [
   {
     id: 12,
     name: 'Exploration',
-    levels: [
+    techLevels: [
       {
         level: 0,
         cost: 0,
@@ -312,7 +312,7 @@ export default [
   {
     id: 13,
     name: 'Move',
-    levels: [
+    techLevels: [
       {
         level: 1,
         cost: 0,
@@ -347,7 +347,7 @@ export default [
   {
     id: 14,
     name: 'Scanners',
-    levels: [
+    techLevels: [
       {
         level: 0,
         cost: 0,
@@ -370,7 +370,7 @@ export default [
   {
     id: 15,
     name: 'Fast BC',
-    levels: [
+    techLevels: [
       {
         level: 0,
         cost: 0,
@@ -389,7 +389,7 @@ export default [
   {
     id: 16,
     name: 'Fighters',
-    levels: [
+    techLevels: [
       {
         level: 0,
         cost: 0,
@@ -424,7 +424,7 @@ export default [
   {
     id: 17,
     name: 'Mine Sweeper',
-    levels: [
+    techLevels: [
       {
         level: 0,
         cost: 0,
@@ -447,7 +447,7 @@ export default [
   {
     id: 18,
     name: 'Mines',
-    levels: [
+    techLevels: [
       {
         level: 0,
         cost: 0,
@@ -466,7 +466,7 @@ export default [
   {
     id: 19,
     name: 'Point Def.',
-    levels: [
+    techLevels: [
       {
         level: 0,
         cost: 0,
@@ -501,7 +501,7 @@ export default [
   {
     id: 20,
     name: 'Advanced Con.',
-    levels: [
+    techLevels: [
       {
         level: 0,
         cost: 0,
@@ -524,7 +524,7 @@ export default [
   {
     id: 21,
     name: 'Tractor Beam',
-    levels: [
+    techLevels: [
       {
         level: 0,
         cost: 0,
@@ -543,12 +543,12 @@ export default [
   {
     id: 22,
     name: '',
-    levels: [],
+    techLevels: [],
   },
   {
     id: 23,
     name: 'Anti-Replicator',
-    levels: [
+    techLevels: [
       {
         level: 0,
         cost: 0,
@@ -571,7 +571,7 @@ export default [
   {
     id: 24,
     name: 'Shield Proj.',
-    levels: [
+    techLevels: [
       {
         level: 0,
         cost: 0,

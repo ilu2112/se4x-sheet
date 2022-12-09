@@ -1,5 +1,4 @@
 import { observable, action } from "mobx";
-import { ThemeConsumer } from "styled-components";
 import { TECH_LEVEL_STATE } from "./enums";
 
 export default class TechLevelModel {

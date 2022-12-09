@@ -1,4 +1,6 @@
 import { action, observable } from "mobx";
+import _ from "lodash";
+
 import technologiesConfigs from "../config/technologies";
 import ProductionColumnModel from "./ProductionColumnModel";
 import TechnologyModel from "./TechnologyModel";
@@ -10,8 +12,12 @@ export default class SheetModel {
   @observable productionColumns = [];
   @observable activeProductionColumn;
 
-  constructor() {
-    this.reset();
+  constructor(initialState) {
+    if (_.isEmpty(initialState)) {
+      this.reset();
+    } else {
+      this._setState(initialState);
+    }
 
     this.reset = this.reset.bind(this);
     this.moveToPrevProductionColumn = this.moveToPrevProductionColumn.bind(this);
@@ -42,6 +48,28 @@ export default class SheetModel {
 
     this.productionColumns[0].isActive = true;
     this.activeProductionColumn = this.productionColumns[0];
+  }
+
+  _setState(state) {
+    this.technologies = [];
+    for (let techConfig of state.technologies) {
+      this.technologies.push(
+        new TechnologyModel(techConfig)
+      );
+    }
+
+    this.productionColumns = [];
+    for (let productionColumnConfig of state.productionColumns) {
+      this.productionColumns.push(
+        new ProductionColumnModel(productionColumnConfig)
+      );
+    }
+
+    for (let i = 1; i <= settings.NO_OF_PHASES - 1; i++) {
+      this.productionColumns[i - 1].nextProductionColumn = this.productionColumns[i];
+    }
+
+    this.activeProductionColumn = _.find(this.productionColumns, c => c.isActive);
   }
 
   @action
