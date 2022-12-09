@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { Scrollbars } from "react-custom-scrollbars";
+import { observer } from "mobx-react";
 import TitleBar from "./common/TitleBar";
 import ProductionLabel from "./production-sheet/ProductionLabel";
 import ProductionColumn from "./production-sheet/ProductionColumn";
+import { sheetStore } from "../models/store";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -50,8 +52,12 @@ const Wrapper = styled.div`
   }
 `;
 
+@observer
 class ProductionSheet extends React.Component {
   render() {
+    const {
+      productionColumns,
+    } = sheetStore;
     return (
       <Wrapper>
         <TitleBar title="Production" />
@@ -81,49 +87,9 @@ class ProductionSheet extends React.Component {
           <div className="production-columns">
             <Scrollbars>
               <div className="production-columns__wrapper">
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
-                <ProductionColumn />
+                {productionColumns.map(props =>
+                  <ProductionColumn key={ props.phase } {...props} />
+                )}
               </div>
             </Scrollbars>
           </div>

@@ -40,20 +40,27 @@ const Wrapper = styled.div`
 
 class ProductionEntry extends React.Component {
   onChange(event) {
-    console.log(event.target.value);
+    const { updateField, fieldName } = this.props;
+    updateField(fieldName, event.target.value);
+    event.target.value = parseInt(event.target.value) || 0;
   }
 
   render() {
     const {
       bgColor,
       readonly,
-      value,
+      fieldName,
     } = this.props;
+    const value = this.props[fieldName];
     return (
       <Wrapper bgColor={ bgColor }>
         {readonly && value}
         {!readonly && 
-          <input type="number" value={ value } onChange={ this.onChange } />
+          <input
+            type="number"
+            value={ value }
+            onChange={ this.onChange.bind(this) }
+          />
         }
       </Wrapper>
     );
