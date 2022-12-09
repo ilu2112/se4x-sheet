@@ -2,10 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import { Scrollbars } from "react-custom-scrollbars";
 import { observer } from "mobx-react";
+import {
+  BsFillArrowRightSquareFill,
+  BsFillArrowLeftSquareFill,
+} from "react-icons/bs";
+
 import TitleBar from "./common/TitleBar";
+import IconButton from "./common/IconButton";
 import ProductionLabel from "./production-sheet/ProductionLabel";
 import ProductionColumn from "./production-sheet/ProductionColumn";
 import { sheetStore } from "../models/store";
+import settings from "../config/settings";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -57,10 +64,21 @@ class ProductionSheet extends React.Component {
   render() {
     const {
       productionColumns,
+      moveToPrevProductionColumn,
+      moveToNextProductionColumn,
     } = sheetStore;
     return (
       <Wrapper>
-        <TitleBar title="Production" />
+        <TitleBar title="Production">
+          <IconButton
+            icon={ <BsFillArrowLeftSquareFill /> }
+            onClick={ moveToPrevProductionColumn }
+          />
+          <IconButton
+            icon={ <BsFillArrowRightSquareFill /> }
+            onClick={ moveToNextProductionColumn }
+          />
+        </TitleBar>
         <div className="production-content">
           <div className="production-labels">
             <ProductionLabel bgColor="#DDD">Economic Phase</ProductionLabel>
