@@ -26,5 +26,7 @@ export default class SheetModel {
         new ProductionColumnModel({ phase: i })
       );
     }
+
+    this.productionColumns[0].isActive = true;
   }
 }

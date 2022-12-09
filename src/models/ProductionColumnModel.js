@@ -20,6 +20,8 @@ export default class ProductionColumnModel {
   @observable technologySpending;
   @observable remainingRP;
 
+  @observable isActive;
+
   constructor({
     phase,
     cpCarriedOver,
@@ -39,6 +41,7 @@ export default class ProductionColumnModel {
     researchCenterRP,
     technologySpending,
     remainingRP,
+    isActive,
   }) {
     this.phase = phase;
     this.cpCarriedOver = cpCarriedOver || 0;
@@ -58,6 +61,7 @@ export default class ProductionColumnModel {
     this.researchCenterRP = researchCenterRP || 0;
     this.technologySpending = technologySpending || 0;
     this.remainingRP = remainingRP || 0;
+    this.isActive = isActive || false;
 
     this.updateField = this.updateField.bind(this);
   }
