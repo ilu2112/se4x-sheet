@@ -10,6 +10,8 @@ const Wrapper = styled.div`
   grid-template-rows: repeat(27, 1fr);
   border: 1px solid #000;
   border-top: none;
+  opacity: .25;
+  cursor: not-allowed;
 `;
 
 class UnitsSheet extends React.Component {
