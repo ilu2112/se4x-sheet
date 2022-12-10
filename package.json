@@ -19,6 +19,7 @@
     "lodash": "^4.17.21",
     "react-custom-scrollbars": "^4.2.1",
     "react-icons": "^4.7.1",
+    "react-modal": "^3.16.1",
     "styled-components": "^5.3.5",
     "styled-reset": "^4.3.4",
     "webpack": "^4.16.1",

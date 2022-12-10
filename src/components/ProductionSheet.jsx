@@ -6,12 +6,14 @@ import {
   BsFillArrowRightSquareFill,
   BsFillArrowLeftSquareFill,
   BsSquareHalf,
+  BsFillXSquareFill,
 } from "react-icons/bs";
 
 import TitleBar from "./common/TitleBar";
 import IconButton from "./common/IconButton";
 import ProductionLabel from "./production-sheet/ProductionLabel";
 import ProductionColumn from "./production-sheet/ProductionColumn";
+import ResetModal from "./production-sheet/ResetModal";
 import { sheetStore } from "../models/store";
 
 const Wrapper = styled.div`
@@ -61,15 +63,49 @@ const Wrapper = styled.div`
 
 @observer
 class ProductionSheet extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isResetModalOpen: false,
+    };
+
+    this.openResetModal = this.openResetModal.bind(this);
+    this.closeResetModal = this.closeResetModal.bind(this);
+  }
+
+  openResetModal() {
+    this.setState({
+      isResetModalOpen: true,
+    });
+  }
+
+  closeResetModal() {
+    this.setState({
+      isResetModalOpen: false,
+    });
+  }
+
   render() {
     const {
       productionColumns,
       moveToPrevProductionColumn,
       moveToNextProductionColumn,
       fetchPrevColumnProduction,
+      reset,
     } = sheetStore;
+    const {
+      isResetModalOpen,
+    } = this.state;
     return (
       <Wrapper>
+        <ResetModal
+          isOpen={ isResetModalOpen }
+          onNoClick={ this.closeResetModal }
+          onYesClick={() => {
+            reset();
+            this.closeResetModal();
+          }}
+        />
         <TitleBar title="Production">
           <IconButton
             icon={ <BsFillArrowLeftSquareFill /> }
@@ -82,6 +118,11 @@ class ProductionSheet extends React.Component {
           <IconButton
             icon={ <BsFillArrowRightSquareFill /> }
             onClick={ moveToNextProductionColumn }
+          />
+          <IconButton
+            icon={ <BsFillXSquareFill /> }
+            withLeftMargin
+            onClick={ this.openResetModal }
           />
         </TitleBar>
         <div className="production-content">
@@ -108,7 +149,7 @@ class ProductionSheet extends React.Component {
             <ProductionLabel bgColor="#DDD">Remaining RP</ProductionLabel>
           </div>
           <div className="production-columns">
-            <Scrollbars>
+            <Scrollbars autoHide={ false }>
               <div className="production-columns__wrapper">
                 {productionColumns.map(props =>
                   <ProductionColumn key={ props.phase } {...props} />

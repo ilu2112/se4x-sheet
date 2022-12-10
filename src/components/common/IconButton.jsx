@@ -13,6 +13,10 @@ const Wrapper = styled.div`
     cursor: not-allowed;
     opacity: .5;
   `}
+
+  ${props => props.withLeftMargin && css `
+    margin-left: 10px;
+  `}
 `;
 
 class IconButton extends React.Component {
@@ -30,11 +34,15 @@ class IconButton extends React.Component {
   render() {
     const {
       icon,
-      onClick,
       disabled,
+      withLeftMargin,
     } = this.props;
     return (
-      <Wrapper disabled={ disabled } onClick={ this.handleOnClick.bind(this) }>
+      <Wrapper
+        disabled={ disabled }
+        onClick={ this.handleOnClick.bind(this) }
+        withLeftMargin={ withLeftMargin }
+      >
         { icon }
       </Wrapper>
     )
