@@ -3,10 +3,12 @@ import styled from "styled-components";
 import { observer } from "mobx-react";
 import {
   BsFillCheckSquareFill,
+  BsFillArrowUpSquareFill,
 } from "react-icons/bs";
 
 import TitleBar from "./common/TitleBar";
 import IconButton from "./common/IconButton";
+import Toggler from "./common/Toggler";
 import TechnologyCell from "./technology-sheet/TechnologyCell";
 import { sheetStore } from "../models/store";
 
@@ -44,13 +46,21 @@ class TechnologySheet extends React.Component {
     const {
       technologies,
       acceptAllTechLevels,
+      shouldSyncTechSpendings,
+      toggleShouldSyncTechSpendings,
     } = sheetStore;
     return (
       <Wrapper>
         <TitleBar title="Tech">
+          <Toggler
+            icon={ <BsFillArrowUpSquareFill /> }
+            enabled={ shouldSyncTechSpendings }
+            onClick={ toggleShouldSyncTechSpendings }
+          />
           <IconButton
             icon={ <BsFillCheckSquareFill /> }
             onClick={ acceptAllTechLevels }
+            withLeftMargin
           />
         </TitleBar>
         {technologies.map(props => 

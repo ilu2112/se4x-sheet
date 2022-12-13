@@ -11,6 +11,7 @@ export default class SheetModel {
   @observable technologies = [];
   @observable productionColumns = [];
   @observable activeProductionColumn;
+  @observable shouldSyncTechSpendings;
 
   constructor(initialState) {
     if (_.isEmpty(initialState)) {
@@ -24,6 +25,7 @@ export default class SheetModel {
     this.moveToNextProductionColumn = this.moveToNextProductionColumn.bind(this);
     this.fetchPrevColumnProduction = this.fetchPrevColumnProduction.bind(this);
     this.acceptAllTechLevels = this.acceptAllTechLevels.bind(this);
+    this.toggleShouldSyncTechSpendings = this.toggleShouldSyncTechSpendings.bind(this);
   }
 
   @action
@@ -48,6 +50,7 @@ export default class SheetModel {
 
     this.productionColumns[0].isActive = true;
     this.activeProductionColumn = this.productionColumns[0];
+    this.shouldSyncTechSpendings = false;
   }
 
   _setState(state) {
@@ -70,6 +73,7 @@ export default class SheetModel {
     }
 
     this.activeProductionColumn = _.find(this.productionColumns, c => c.isActive);
+    this.shouldSyncTechSpendings = state.shouldSyncTechSpendings || false;
   }
 
   @action
@@ -116,5 +120,28 @@ export default class SheetModel {
         }
       }
     }
+    this.shouldSyncTechSpendings = false;
+  }
+
+  @action
+  toggleShouldSyncTechSpendings() {
+    this.shouldSyncTechSpendings = !this.shouldSyncTechSpendings;
+    this.syncTechSpendingsIfNeeded();
+  }
+
+  @action
+  syncTechSpendingsIfNeeded() {
+    if (!this.shouldSyncTechSpendings) {
+      return;
+    }
+    let total = 0;
+    for (let technology of this.technologies) {
+      for (let techLevel of technology.techLevels) {
+        if (techLevel.state === TECH_LEVEL_STATE.MARKED) {
+          total += techLevel.cost;
+        }
+      }
+    }
+    this.activeProductionColumn.updateField('technologySpending', total);
   }
 }

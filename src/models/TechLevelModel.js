@@ -1,5 +1,6 @@
 import { observable, action } from "mobx";
 import { TECH_LEVEL_STATE } from "./enums";
+import { sheetStore } from "./store";
 
 export default class TechLevelModel {
   level;
@@ -24,7 +25,12 @@ export default class TechLevelModel {
   @action
   toggleState() {
     if (!this.isPlaceholder) {
-      this.state = (this.state + 1) % 3;
+      if (this.state === TECH_LEVEL_STATE.MARKED) {
+        this.state = TECH_LEVEL_STATE.NOT_OWNED;
+      } else {
+        this.state = (this.state + 1) % 3;
+      }
+      sheetStore.syncTechSpendingsIfNeeded();
     }
   }
 }
