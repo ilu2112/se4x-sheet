@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   }
 
   .tech-title {
-    font-size: 15px;
+    font-size: 13px;
     letter-spacing: 0.75px;
     font-style: italic;
     font-weight: 700;

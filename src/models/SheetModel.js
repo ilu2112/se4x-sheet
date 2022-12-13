@@ -6,10 +6,12 @@ import ProductionColumnModel from "./ProductionColumnModel";
 import TechnologyModel from "./TechnologyModel";
 import settings from "../config/settings";
 import { TECH_LEVEL_STATE } from "./enums";
+import UnitModel from "./UnitModel";
 
 export default class SheetModel {
   @observable technologies = [];
   @observable productionColumns = [];
+  @observable units = [];
   @observable activeProductionColumn;
   @observable shouldSyncTechSpendings;
 
@@ -19,6 +21,38 @@ export default class SheetModel {
     } else {
       this._setState(initialState);
     }
+
+    // TEMPORARY UNITS
+    this.units = [];
+    this.units.push(
+      new UnitModel({
+        id: 1,
+        name: "CA-1",
+        quantity: 3,
+        attack: 1,
+        defense: 2,
+        move: 4,
+        experience: "G",
+        technologies: [],
+        hull: 2,
+        upkeepCost: 6,
+      })
+    );
+    this.units.push(
+      new UnitModel({
+        id: 2,
+        name: "SC-1",
+        quantity: 2,
+        attack: 1,
+        defense: 0,
+        move: 4,
+        experience: "G",
+        technologies: [],
+        hull: 1,
+        upkeepCost: 2,
+      })
+    );
+    // ...
 
     this.reset = this.reset.bind(this);
     this.moveToPrevProductionColumn = this.moveToPrevProductionColumn.bind(this);

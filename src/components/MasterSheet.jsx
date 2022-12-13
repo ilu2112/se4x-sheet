@@ -17,21 +17,21 @@ const MasterSheetComponent = styled.div`
   .production-sheet-wrapper {
     height: 100%;
     width: 100%;
-    grid-column: 1 / 9;
+    grid-column: 1 / 8;
     grid-row: 1 / 9;
   }
 
   .technology-sheet-wrapper {
     height: 100%;
     width: 100%;
-    grid-column: 1 / 9;
+    grid-column: 1 / 8;
     grid-row: 9 / 13;
   }
 
   .units-sheet-wrapper {
     height: 100%;
     width: 100%;
-    grid-column: 9 / 13;
+    grid-column: 8 / 13;
     grid-row: 1 / 13;
   }
 `;

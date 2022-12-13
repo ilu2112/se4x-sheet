@@ -26,6 +26,7 @@ const Wrapper = styled.div`
 
   .title-bar {
     grid-column: 1 / 14;
+    border-right: 1px solid #000;
   }
 
   .production-content {
