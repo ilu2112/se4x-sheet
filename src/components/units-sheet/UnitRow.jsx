@@ -7,14 +7,19 @@ import UnitCell from "./UnitCell";
 import StaticValue from "./StaticValue";
 import TechsList from "./TechsList";
 import Toggler from "../common/Toggler";
+import UnitNameDropdown from "./UnitNameDropdown";
 
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(14, 1fr);
 
   .unit-cell {
+    &:nth-of-type(10n + 1) {
+      grid-column: 1 / 3;
+    }
+
     &:nth-of-type(10n + 7) {
-      grid-column: 7 / 11;
+      grid-column: 8 / 11;
     }
 
     &:nth-of-type(10n) {
@@ -22,6 +27,7 @@ const Wrapper = styled.div`
     }
   }
 `;
+
 
 class UnitRow extends React.Component {
   constructor(props) {
@@ -57,11 +63,16 @@ class UnitRow extends React.Component {
     return (
       <Wrapper>
         <UnitCell>
-          <StaticValue>{ name }</StaticValue>
+          <UnitNameDropdown
+            value={ name }
+            isEditable={ isEditable }
+            updateFunction={ value => updateField("name", value) }
+          />
         </UnitCell>
         <UnitCell>
           <NumberStepInput
             value={ quantity }
+            isEditable={ isEditable }
             updateFunction={ value => updateField("quantity", value) }
           />
         </UnitCell>

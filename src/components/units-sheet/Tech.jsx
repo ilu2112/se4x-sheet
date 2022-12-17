@@ -25,6 +25,13 @@ const Wrapper = styled.div`
 `;
 
 class Tech extends React.Component {
+  handleClick() {
+    const { isEditable, toggleOwned } = this.props;
+    if (isEditable) {
+      toggleOwned();
+    }
+  }
+
   render() {
     const {
       name,
@@ -32,7 +39,11 @@ class Tech extends React.Component {
       isEditable,
     } = this.props;
     return (
-      <Wrapper owned={ owned } isEditable={ isEditable }>
+      <Wrapper
+        owned={ owned }
+        isEditable={ isEditable }
+        onClick={ this.handleClick.bind(this) }
+      >
         { name }
       </Wrapper>
     );

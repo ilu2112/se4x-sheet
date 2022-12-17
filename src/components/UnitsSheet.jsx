@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { Scrollbars } from "react-custom-scrollbars";
 import { observer } from "mobx-react";
+import { BsFillPlusSquareFill } from "react-icons/bs";
+import IconButton from "./common/IconButton";
 import TitleBar from "./common/TitleBar";
 import UnitLabel from "./units-sheet/UnitLabel";
 import UnitRow from "./units-sheet/UnitRow";
@@ -31,8 +33,12 @@ const Wrapper = styled.div`
     grid-row: 1 / 2;
 
     .unit-label {
+      &:nth-of-type(10n + 1) {
+        grid-column: 1 / 3;
+      }
+
       &:nth-of-type(10n + 7) {
-        grid-column: 7 / 11;
+        grid-column: 8 / 11;
       }
   
       &:nth-of-type(10n) {
@@ -49,10 +55,18 @@ const Wrapper = styled.div`
 @observer
 class UnitsSheet extends React.Component {
   render() {
-    const { units } = sheetStore;
+    const {
+      units,
+      addNewUnit,
+    } = sheetStore;
     return (
       <Wrapper>
-        <TitleBar title="Units" />
+        <TitleBar title="Units">
+          <IconButton
+            icon={ <BsFillPlusSquareFill /> }
+            onClick={ addNewUnit }
+          />
+        </TitleBar>
         <div className="units-content">
           <div className="units-labels">
             <UnitLabel title="Grp" />

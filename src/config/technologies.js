@@ -3,7 +3,7 @@ import { TECH_LEVEL_STATE } from "../models/enums";
 export default [
   {
     id: 1,
-    name: 'Ship Size',
+    name: "Ship Size",
     techLevels: [
       {
         level: 1,
@@ -38,7 +38,7 @@ export default [
   },
   { 
     id: 2,
-    name: 'Ship Yard',
+    name: "Ship Yard",
     techLevels: [
       {
         level: 1,
@@ -61,7 +61,7 @@ export default [
   },
   {
     id: 3,
-    name: 'Military Acad.',
+    name: "Military Acad.",
     techLevels: [
       {
         level: 0,
@@ -84,7 +84,7 @@ export default [
   },
   {
     id: 4,
-    name: 'Terraforming',
+    name: "Terraforming",
     techLevels: [
       {
         level: 0,
@@ -107,7 +107,7 @@ export default [
   },
   {
     id: 5,
-    name: 'Attack',
+    name: "Attack",
     techLevels: [
       {
         level: 0,
@@ -142,7 +142,7 @@ export default [
   },
   {
     id: 6,
-    name: 'Ground',
+    name: "Ground",
     techLevels: [
       {
         level: 1,
@@ -165,7 +165,7 @@ export default [
   },
   {
     id: 7,
-    name: 'Boarding',
+    name: "Boarding",
     techLevels: [
       {
         level: 0,
@@ -188,7 +188,7 @@ export default [
   },
   {
     id: 8,
-    name: 'Security',
+    name: "Security",
     techLevels: [
       {
         level: 0,
@@ -211,7 +211,7 @@ export default [
   },
   {
     id: 9,
-    name: 'Defense',
+    name: "Defense",
     techLevels: [
       {
         level: 0,
@@ -246,7 +246,7 @@ export default [
   },
   {
     id: 10,
-    name: 'Cloaking',
+    name: "Cloaking",
     techLevels: [
       {
         level: 0,
@@ -269,7 +269,7 @@ export default [
   },
   {
     id: 11,
-    name: 'Exploration',
+    name: "Exploration",
     techLevels: [
       {
         level: 0,
@@ -292,7 +292,7 @@ export default [
   },
   {
     id: 12,
-    name: 'Tractor Beam',
+    name: "Tractor Beam",
     techLevels: [
       {
         level: 0,
@@ -315,7 +315,7 @@ export default [
   },
   {
     id: 13,
-    name: 'Move',
+    name: "Move",
     techLevels: [
       {
         level: 1,
@@ -350,7 +350,7 @@ export default [
   },
   {
     id: 14,
-    name: 'Scanners',
+    name: "Scanners",
     techLevels: [
       {
         level: 0,
@@ -373,7 +373,7 @@ export default [
   },
   {
     id: 15,
-    name: 'Fast BC',
+    name: "Fast BC",
     techLevels: [
       {
         level: 0,
@@ -396,7 +396,7 @@ export default [
   },
   {
     id: 16,
-    name: 'Mines',
+    name: "Mines",
     techLevels: [
       {
         level: 0,
@@ -419,7 +419,7 @@ export default [
   },
   {
     id: 17,
-    name: 'Tactics',
+    name: "Tactics",
     techLevels: [
       {
         level: 0,
@@ -454,7 +454,7 @@ export default [
   },
   {
     id: 18,
-    name: 'Mine Sweeper',
+    name: "Mine Sweeper",
     techLevels: [
       {
         level: 0,
@@ -477,7 +477,7 @@ export default [
   },
   {
     id: 19,
-    name: 'Point Def.',
+    name: "Point Def.",
     techLevels: [
       {
         level: 0,
@@ -500,7 +500,7 @@ export default [
   },
   {
     id: 20,
-    name: 'Advanced Con.',
+    name: "Advanced Con.",
     techLevels: [
       {
         level: 0,
@@ -523,7 +523,7 @@ export default [
   },
   {
     id: 21,
-    name: 'Fighters',
+    name: "Fighters",
     techLevels: [
       {
         level: 0,
@@ -558,7 +558,7 @@ export default [
   },
   {
     id: 22,
-    name: 'Anti-Replicator',
+    name: "Anti-Replicator",
     techLevels: [
       {
         level: 0,
@@ -581,7 +581,7 @@ export default [
   },
   {
     id: 23,
-    name: 'Shield Proj.',
+    name: "Shield Proj.",
     techLevels: [
       {
         level: 0,
@@ -604,7 +604,7 @@ export default [
   },
   {
     id: 24,
-    name: '',
+    name: "",
     techLevels: [],
   },
 ]

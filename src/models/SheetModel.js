@@ -22,53 +22,13 @@ export default class SheetModel {
       this._setState(initialState);
     }
 
-    // TEMPORARY UNITS
-    this.units = [];
-    this.units.push(
-      new UnitModel({
-        id: 1,
-        name: "CA-1",
-        quantity: 3,
-        attack: 1,
-        defense: 2,
-        move: 4,
-        experience: 0,
-        technologies: [
-          {
-            name: "Exploration 1",
-            owned: true,
-          },
-          {
-            name: "Exploration 2",
-            owned: false,
-          },
-        ],
-        hull: 2,
-        upkeepCost: 6,
-      })
-    );
-    this.units.push(
-      new UnitModel({
-        id: 2,
-        name: "SC-1",
-        quantity: 2,
-        attack: 1,
-        defense: 0,
-        move: 4,
-        experience: 0,
-        technologies: [],
-        hull: 1,
-        upkeepCost: 2,
-      })
-    );
-    // ...
-
     this.reset = this.reset.bind(this);
     this.moveToPrevProductionColumn = this.moveToPrevProductionColumn.bind(this);
     this.moveToNextProductionColumn = this.moveToNextProductionColumn.bind(this);
     this.fetchPrevColumnProduction = this.fetchPrevColumnProduction.bind(this);
     this.acceptAllTechLevels = this.acceptAllTechLevels.bind(this);
     this.toggleShouldSyncTechSpendings = this.toggleShouldSyncTechSpendings.bind(this);
+    this.addNewUnit = this.addNewUnit.bind(this);
   }
 
   @action
@@ -94,6 +54,7 @@ export default class SheetModel {
     this.productionColumns[0].isActive = true;
     this.activeProductionColumn = this.productionColumns[0];
     this.shouldSyncTechSpendings = false;
+    this.units = [];
   }
 
   _setState(state) {
@@ -117,6 +78,13 @@ export default class SheetModel {
 
     this.activeProductionColumn = _.find(this.productionColumns, c => c.isActive);
     this.shouldSyncTechSpendings = state.shouldSyncTechSpendings || false;
+
+    this.units = [];
+    for (let unit of state.units) {
+      this.units.push(
+        new UnitModel(unit)
+      );
+    }
   }
 
   @action
@@ -186,5 +154,23 @@ export default class SheetModel {
       }
     }
     this.activeProductionColumn.updateField('technologySpending', total);
+  }
+
+  @action
+  addNewUnit() {
+    this.units.push(
+      new UnitModel({
+        id: parseInt(Math.random() * 1000000),
+        name: null,
+        quantity: 0,
+        attack: 0,
+        defense: 0,
+        move: 1,
+        experience: 0,
+        technologies: [],
+        hull: 0,
+        upkeepCost: 0,
+      })
+    );
   }
 }
