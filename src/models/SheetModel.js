@@ -29,6 +29,7 @@ export default class SheetModel {
     this.acceptAllTechLevels = this.acceptAllTechLevels.bind(this);
     this.toggleShouldSyncTechSpendings = this.toggleShouldSyncTechSpendings.bind(this);
     this.addNewUnit = this.addNewUnit.bind(this);
+    this.removeUnit = this.removeUnit.bind(this);
   }
 
   @action
@@ -172,5 +173,10 @@ export default class SheetModel {
         upkeepCost: 0,
       })
     );
+  }
+
+  @action
+  removeUnit(id) {
+    this.units = _.filter(this.units, u => u.id !== id);
   }
 }

@@ -4,7 +4,8 @@ export default [
     noOfTokens: 4,
     hull: 1,
     upkeepCost: 0,
-    availableTechs: []
+    availableTechs: [
+    ],
   },
   {
     name: "SC",
@@ -15,7 +16,7 @@ export default [
       "Point Def 1",
       "Point Def 2",
       "Point Def 3",
-    ]
+    ],
   },
   {
     name: "CA",
@@ -23,8 +24,8 @@ export default [
     hull: 2,
     upkeepCost: 2,
     availableTechs: [
-      "Exploration 1",
-      "Exploration 2",
-    ]
+      "Explor. 1",
+      "Explor. 2",
+    ],
   }
 ];

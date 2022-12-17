@@ -38,11 +38,11 @@ const Wrapper = styled.div`
       }
 
       &:nth-of-type(11n + 8) {
-        grid-column: 9 / 12;
+        grid-column: 9 / 11;
       }
   
       &:nth-of-type(11n) {
-        grid-column: 14 / 16;
+        grid-column: 13 / 15;
       }
     }
   }

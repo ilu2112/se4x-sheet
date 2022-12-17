@@ -1,13 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-import { BsPencilSquare } from "react-icons/bs";
-
+import {
+  BsPencilSquare,
+  BsFillXSquareFill,
+} from "react-icons/bs";
 import NumberStepInput from "../common/NumberStepInput";
 import UnitCell from "./UnitCell";
 import StaticValue from "./StaticValue";
 import TechsList from "./TechsList";
 import Toggler from "../common/Toggler";
+import IconButton from "../common/IconButton";
 import UnitNameDropdown from "./UnitNameDropdown";
+import { sheetStore } from "../../models/store";
 
 const Wrapper = styled.div`
   display: grid;
@@ -19,11 +23,11 @@ const Wrapper = styled.div`
     }
 
     &:nth-of-type(11n + 8) {
-      grid-column: 9 / 12;
+      grid-column: 9 / 11;
     }
 
     &:nth-of-type(11n) {
-      grid-column: 14 / 16;
+      grid-column: 13 / 15;
     }
   }
 `;
@@ -46,6 +50,7 @@ class UnitRow extends React.Component {
 
   render() {
     const {
+      id,
       name,
       quantity,
       attack,
@@ -61,6 +66,9 @@ class UnitRow extends React.Component {
     const {
       isEditable,
     } = this.state;
+    const { 
+      removeUnit,
+    } = sheetStore;
     return (
       <Wrapper>
         <UnitCell>
@@ -133,6 +141,12 @@ class UnitRow extends React.Component {
             icon={ <BsPencilSquare /> }
             enabled={ isEditable }
             onClick={ this.toggleIsEditable }
+          />
+          <IconButton
+            icon={ <BsFillXSquareFill /> }
+            disabled={ !isEditable }
+            withLeftMargin
+            onClick={ () => removeUnit(id) }
           />
         </UnitCell>
       </Wrapper>
