@@ -10,6 +10,7 @@ export default class UnitModel {
   @observable attack;
   @observable defense;
   @observable move;
+  @observable tactic;
   @observable experience;
   @observable technologies = [];
   @observable hull;
@@ -22,17 +23,19 @@ export default class UnitModel {
     attack,
     defense,
     move,
+    tactic,
     experience,
     technologies,
     hull,
     upkeepCost,
   }) {
     this.id = id;
-    this.name = name;
+    this.name = name || "-";
     this.quantity = quantity || 1;
     this.attack = attack || 0;
     this.defense = defense || 0;
     this.move = move || 1;
+    this.tactic = tactic || 0;
     this.experience = experience || 0;
     this.hull = hull || 1;
     this.upkeepCost = upkeepCost || this.quantity * this.hull;

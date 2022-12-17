@@ -33,16 +33,16 @@ const Wrapper = styled.div`
     grid-row: 1 / 2;
 
     .unit-label {
-      &:nth-of-type(10n + 1) {
+      &:nth-of-type(11n + 1) {
         grid-column: 1 / 3;
       }
 
-      &:nth-of-type(10n + 7) {
-        grid-column: 8 / 11;
+      &:nth-of-type(11n + 8) {
+        grid-column: 9 / 12;
       }
   
-      &:nth-of-type(10n) {
-        grid-column: 13 / 15;
+      &:nth-of-type(11n) {
+        grid-column: 14 / 16;
       }
     }
   }
@@ -74,6 +74,7 @@ class UnitsSheet extends React.Component {
             <UnitLabel title="Atk" />
             <UnitLabel title="Def" />
             <UnitLabel title="Mov" />
+            <UnitLabel title="Tac" />
             <UnitLabel title="Exp" />
             <UnitLabel title="Tech" />
             <UnitLabel title="Hull" />

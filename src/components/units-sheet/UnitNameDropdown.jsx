@@ -27,7 +27,6 @@ const Wrapper = styled.div`
     font-size: 12px;
     letter-spacing: 0.75px;
     font-weight: 700;
-    text-transform: uppercase;
     font-style: italic;
     padding: 2px;
   }

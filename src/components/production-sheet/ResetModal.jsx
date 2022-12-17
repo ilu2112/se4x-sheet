@@ -14,6 +14,7 @@ const modalStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    overflow: 'hidden',
   },
 };
 
@@ -32,6 +33,10 @@ const ModalContent = styled.div`
 `;
 
 class ResetModal extends React.Component {
+  componentWillMount() {
+    Modal.setAppElement("body");
+  }
+
   render() {
     const {
       isOpen,

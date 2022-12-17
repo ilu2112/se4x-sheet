@@ -14,16 +14,16 @@ const Wrapper = styled.div`
   grid-template-columns: repeat(14, 1fr);
 
   .unit-cell {
-    &:nth-of-type(10n + 1) {
+    &:nth-of-type(11n + 1) {
       grid-column: 1 / 3;
     }
 
-    &:nth-of-type(10n + 7) {
-      grid-column: 8 / 11;
+    &:nth-of-type(11n + 8) {
+      grid-column: 9 / 12;
     }
 
-    &:nth-of-type(10n) {
-      grid-column: 13 / 15;
+    &:nth-of-type(11n) {
+      grid-column: 14 / 16;
     }
   }
 `;
@@ -51,6 +51,7 @@ class UnitRow extends React.Component {
       attack,
       defense,
       move,
+      tactic,
       experience,
       hull,
       upkeepCost,
@@ -95,6 +96,13 @@ class UnitRow extends React.Component {
             value={ move }
             isEditable={ isEditable }
             updateFunction={ value => updateField("move", value) }
+          />
+        </UnitCell>
+        <UnitCell>
+          <NumberStepInput
+            value={ tactic }
+            isEditable={ isEditable }
+            updateFunction={ value => updateField("tactic", value) }
           />
         </UnitCell>
         <UnitCell>

@@ -1,5 +1,12 @@
 export default [
   {
+    name: "Miner",
+    noOfTokens: 4,
+    hull: 1,
+    upkeepCost: 0,
+    availableTechs: []
+  },
+  {
     name: "SC",
     noOfTokens: 6,
     hull: 1,
