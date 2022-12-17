@@ -30,6 +30,7 @@ export default class SheetModel {
     this.toggleShouldSyncTechSpendings = this.toggleShouldSyncTechSpendings.bind(this);
     this.addNewUnit = this.addNewUnit.bind(this);
     this.removeUnit = this.removeUnit.bind(this);
+    this.reorderUnits = this.reorderUnits.bind(this);
   }
 
   @action
@@ -178,5 +179,10 @@ export default class SheetModel {
   @action
   removeUnit(id) {
     this.units = _.filter(this.units, u => u.id !== id);
+  }
+
+  @action
+  reorderUnits(ids) {
+    this.units = _.sortBy(this.units, u => ids.indexOf(u.id));
   }
 }

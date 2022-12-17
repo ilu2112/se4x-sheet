@@ -1,6 +1,6 @@
 export default [
   {
-    name: "Miner",
+    name: "Min",
     noOfTokens: 4,
     hull: 1,
     upkeepCost: 0,

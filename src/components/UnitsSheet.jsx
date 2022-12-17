@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Scrollbars } from "react-custom-scrollbars";
 import { observer } from "mobx-react";
 import { BsFillPlusSquareFill } from "react-icons/bs";
+import { ReactSortable } from "react-sortablejs";
+
 import IconButton from "./common/IconButton";
 import TitleBar from "./common/TitleBar";
 import UnitLabel from "./units-sheet/UnitLabel";
@@ -54,6 +56,12 @@ const Wrapper = styled.div`
 
 @observer
 class UnitsSheet extends React.Component {
+  handleListReorder(newState) {
+    const { reorderUnits } = sheetStore;
+    const ids = _.map(newState, s => s.id);
+    reorderUnits(ids);
+  }
+
   render() {
     const {
       units,
@@ -84,9 +92,17 @@ class UnitsSheet extends React.Component {
           <div className="units-rows">
             <Scrollbars autoHide={ false }>
               <div className="units-rows__wrapper">
-                {units.map(props =>
-                  <UnitRow key={ props.id } {...props} />
-                )}
+
+                <ReactSortable
+                  list={ units }
+                  setList={ this.handleListReorder.bind(this) }
+                  handle=".drag-handle"
+                >
+                  {units.map(props =>
+                    <UnitRow key={ props.id } {...props} />
+                  )}
+                </ReactSortable>
+
               </div>
             </Scrollbars>
           </div>

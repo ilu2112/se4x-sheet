@@ -4,6 +4,9 @@ import {
   BsPencilSquare,
   BsFillXSquareFill,
 } from "react-icons/bs";
+import {
+  RxDragHandleDots2,
+} from "react-icons/rx";
 import NumberStepInput from "../common/NumberStepInput";
 import UnitCell from "./UnitCell";
 import StaticValue from "./StaticValue";
@@ -16,8 +19,11 @@ import { sheetStore } from "../../models/store";
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(14, 1fr);
+  background: #FFF;
 
   .unit-cell {
+    position: relative;
+
     &:nth-of-type(11n + 1) {
       grid-column: 1 / 3;
     }
@@ -29,6 +35,18 @@ const Wrapper = styled.div`
     &:nth-of-type(11n) {
       grid-column: 13 / 15;
     }
+  }
+
+  .drag-handle {
+    background: #EEE;
+    cursor: move;
+    width: 16px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
   }
 `;
 
@@ -72,6 +90,9 @@ class UnitRow extends React.Component {
     return (
       <Wrapper>
         <UnitCell>
+          <div className="drag-handle">
+            <RxDragHandleDots2 />
+          </div>
           <UnitNameDropdown
             value={ name }
             isEditable={ isEditable }
