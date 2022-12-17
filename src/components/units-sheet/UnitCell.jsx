@@ -5,8 +5,8 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-right: 1px solid #000;
-  border-bottom: 1px solid #000;
+  border-right: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
 `;
 
 class UnitCell extends React.Component {

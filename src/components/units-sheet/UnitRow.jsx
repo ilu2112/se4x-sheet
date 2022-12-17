@@ -26,6 +26,7 @@ const Wrapper = styled.div`
 
     &:nth-of-type(11n + 1) {
       grid-column: 1 / 3;
+      padding-left: 16px;
     }
 
     &:nth-of-type(11n + 8) {

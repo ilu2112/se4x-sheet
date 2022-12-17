@@ -52,6 +52,24 @@ const Wrapper = styled.div`
   .units-rows {
     grid-row: 2 / 16;
   }
+
+  .sortable-chosen {
+    border-top: 1px solid #CCC;
+    border-left: 1px solid #CCC;
+  }
+
+  .sortable-ghost {
+    position: relative;
+    &:after {
+      background: #CCC;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      content: "";
+    }
+  }
 `;
 
 @observer
@@ -77,7 +95,7 @@ class UnitsSheet extends React.Component {
         </TitleBar>
         <div className="units-content">
           <div className="units-labels">
-            <UnitLabel title="Grp" />
+            <UnitLabel title="Group" />
             <UnitLabel title="#" />
             <UnitLabel title="Atk" />
             <UnitLabel title="Def" />
