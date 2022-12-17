@@ -3,10 +3,21 @@ import styled from "styled-components";
 import NumberStepInput from "../common/NumberStepInput";
 import UnitCell from "./UnitCell";
 import StaticValue from "./StaticValue";
+import TechsList from "./TechsList";
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: repeat(14, 1fr);
+
+  .unit-cell {
+    &:nth-of-type(10n + 7) {
+      grid-column: 7 / 11;
+    }
+
+    &:nth-of-type(10n) {
+      grid-column: 13 / 15;
+    }
+  }
 `;
 
 class UnitRow extends React.Component {
@@ -55,7 +66,7 @@ class UnitRow extends React.Component {
           { experience }
         </UnitCell>
         <UnitCell>
-          ...
+          <TechsList />
         </UnitCell>
         <UnitCell>
           <StaticValue>{ hull }</StaticValue>

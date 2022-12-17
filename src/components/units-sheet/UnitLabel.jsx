@@ -25,7 +25,7 @@ class UnitLabel extends React.Component {
   render() {
     const { title } = this.props;
     return (
-      <Wrapper>
+      <Wrapper className="unit-label">
         { title }
       </Wrapper>
     );

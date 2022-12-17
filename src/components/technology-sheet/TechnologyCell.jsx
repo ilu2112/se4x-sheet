@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
   user-select: none;
 
-  &:nth-of-type(3n + 1) {
+  &:nth-of-type(4n) {
     border-right: none;
   }
 

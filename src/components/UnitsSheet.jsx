@@ -12,25 +12,37 @@ const Wrapper = styled.div`
   height: 100%;
   user-select: none;
   display: grid;
-  grid-template-rows: repeat(27, 1fr);
+  grid-template-rows: repeat(18, 1fr);
   border: 1px solid #000;
   border-top: none;
   
   .units-content {
-    grid-row: 2 / 28;
+    grid-row: 2 / 19;
+    display: grid;
+    grid-template-rows: repeat(15, 1fr);
   }
 
   .units-labels {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    height: 30px;
+    grid-template-columns: repeat(14, 1fr);
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
     background: #DDD;
+    grid-row: 1 / 2;
+
+    .unit-label {
+      &:nth-of-type(10n + 7) {
+        grid-column: 7 / 11;
+      }
+  
+      &:nth-of-type(10n) {
+        grid-column: 13 / 15;
+      }
+    }
   }
 
   .units-rows {
-    // grid-row: 3 / 28;
+    grid-row: 2 / 16;
   }
 `;
 

@@ -17,22 +17,22 @@ const MasterSheetComponent = styled.div`
   .production-sheet-wrapper {
     height: 100%;
     width: 100%;
-    grid-column: 1 / 8;
-    grid-row: 1 / 9;
+    grid-column: 1 / 6;
+    grid-row: 1 / 10;
   }
 
   .technology-sheet-wrapper {
     height: 100%;
     width: 100%;
-    grid-column: 1 / 8;
-    grid-row: 9 / 13;
+    grid-column: 1 / 13;
+    grid-row: 10 / 13;
   }
 
   .units-sheet-wrapper {
     height: 100%;
     width: 100%;
-    grid-column: 8 / 13;
-    grid-row: 1 / 13;
+    grid-column: 6 / 13;
+    grid-row: 1 / 10;
   }
 `;
 

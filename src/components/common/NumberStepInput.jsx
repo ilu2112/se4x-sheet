@@ -7,8 +7,8 @@ import {
 
 const Wrapper = styled.div`
   position: relative;
-  height: 40px;
-  max-width: 50px;
+  height: 30px;
+  max-width: 40px;
   width: 100%;
   margin: 4px auto;
   padding: 0 2px;
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
       height: 100%;
       display: flex;
       align-items: center;
-      font-size: 18px;
+      font-size: 13px;
       letter-spacing: 0.75px;
       font-style: italic;
       font-weight: 700;
@@ -42,6 +42,8 @@ const Wrapper = styled.div`
 
   svg {
     fill: #999;
+    width: 14px;
+    height: 14px;
   }
 `;
 

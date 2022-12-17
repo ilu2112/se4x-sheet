@@ -26,14 +26,14 @@ export default class UnitModel {
   }) {
     this.id = id;
     this.name = name;
-    this.quantity = quantity;
-    this.attack = attack;
-    this.defense = defense;
-    this.move = move;
+    this.quantity = quantity || 1;
+    this.attack = attack || 0;
+    this.defense = defense || 0;
+    this.move = move || 1;
     this.experience = experience;
     this.technologies = technologies || [];
-    this.hull = hull;
-    this.upkeepCost = upkeepCost;
+    this.hull = hull || 1;
+    this.upkeepCost = upkeepCost || this.quantity * this.hull;
 
     this.updateField = this.updateField.bind(this);
   }

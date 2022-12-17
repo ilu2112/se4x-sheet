@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 class UnitCell extends React.Component {
   render() {
     return (
-      <Wrapper>
+      <Wrapper className="unit-cell">
         { this.props.children }
       </Wrapper>
     );
