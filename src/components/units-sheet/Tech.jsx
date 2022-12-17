@@ -10,18 +10,29 @@ const Wrapper = styled.div`
   padding: 4px 10px;
   border-radius: 5px;
   margin: 5px;
-  cursor: pointer;
 
-  ${props => !props.owned && css `
+  ${props => !props.owned && css`
     opacity: .25;
+  `};
+
+  ${props => props.isEditable && css`
+    cursor: pointer;
+  `};
+
+  ${props => !props.isEditable && !props.owned && css`
+    display: none;
   `};
 `;
 
 class Tech extends React.Component {
   render() {
-    const { name, owned } = this.props;
+    const {
+      name,
+      owned,
+      isEditable,
+    } = this.props;
     return (
-      <Wrapper owned={ owned }>
+      <Wrapper owned={ owned } isEditable={ isEditable }>
         { name }
       </Wrapper>
     );

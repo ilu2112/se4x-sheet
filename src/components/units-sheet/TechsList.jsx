@@ -7,10 +7,18 @@ const Wrapper = styled.div`
 
 class TechsList extends React.Component {
   render() {
+    const { isEditable } = this.props;
     return (
       <Wrapper>
-        <Tech owned name="Exploration 1" />
-        <Tech name="Exploration 2" />
+        <Tech
+          owned
+          isEditable={ isEditable }
+          name="Exploration 1"
+        />
+        <Tech
+          isEditable={ isEditable }
+          name="Exploration 2"
+        />
       </Wrapper>
     );
   }

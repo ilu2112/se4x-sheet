@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import {
   BsFillPlusSquareFill,
   BsFillDashSquareFill,
@@ -23,6 +23,10 @@ const Wrapper = styled.div`
       letter-spacing: 0.75px;
       font-style: italic;
       font-weight: 700;
+
+      ${props => !props.isEditable && css`
+        justify-content: center;
+      `}
     }
 
     &__button {
@@ -57,24 +61,31 @@ class NumberStepInput extends React.Component {
   }
 
   render() {
-    const { value } = this.props;
+    const {
+      value,
+      isEditable,
+    } = this.props;
     return (
-      <Wrapper className="nsi">
+      <Wrapper isEditable={ isEditable } className="nsi">
         <div className="nsi__value">
           { value }
         </div>
-        <div
-          className="nsi__button nsi__button--plus"
-          onClick={ () => this.handleOnClick(1) }
-        >
-          <BsFillPlusSquareFill />
-        </div>
-        <div
-          className="nsi__button nsi__button--minus"
-          onClick={ () => this.handleOnClick(-1) }
-        >
-          <BsFillDashSquareFill />
-        </div>
+        {isEditable &&
+          <div
+            className="nsi__button nsi__button--plus"
+            onClick={ () => this.handleOnClick(1) }
+          >
+            <BsFillPlusSquareFill />
+          </div>
+        }
+        {isEditable &&
+            <div
+              className="nsi__button nsi__button--minus"
+              onClick={ () => this.handleOnClick(-1) }
+            >
+              <BsFillDashSquareFill />
+            </div>
+        }
       </Wrapper>
     )
   }
