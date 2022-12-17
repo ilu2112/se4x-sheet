@@ -32,8 +32,17 @@ export default class SheetModel {
         attack: 1,
         defense: 2,
         move: 4,
-        experience: "G",
-        technologies: [],
+        experience: 0,
+        technologies: [
+          {
+            name: "Exploration 1",
+            owned: true,
+          },
+          {
+            name: "Exploration 2",
+            owned: false,
+          },
+        ],
         hull: 2,
         upkeepCost: 6,
       })
@@ -46,7 +55,7 @@ export default class SheetModel {
         attack: 1,
         defense: 0,
         move: 4,
-        experience: "G",
+        experience: 0,
         technologies: [],
         hull: 1,
         upkeepCost: 2,

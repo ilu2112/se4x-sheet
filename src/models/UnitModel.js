@@ -30,7 +30,7 @@ export default class UnitModel {
     this.attack = attack || 0;
     this.defense = defense || 0;
     this.move = move || 1;
-    this.experience = experience;
+    this.experience = experience || 0;
     this.technologies = technologies || [];
     this.hull = hull || 1;
     this.upkeepCost = upkeepCost || this.quantity * this.hull;

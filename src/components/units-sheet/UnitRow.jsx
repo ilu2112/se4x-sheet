@@ -48,6 +48,7 @@ class UnitRow extends React.Component {
       experience,
       hull,
       upkeepCost,
+      technologies,
       updateField,
     } = this.props;
     const {
@@ -86,10 +87,17 @@ class UnitRow extends React.Component {
           />
         </UnitCell>
         <UnitCell>
-          { experience }
+          <NumberStepInput
+            value={ experience }
+            isEditable={ isEditable }
+            updateFunction={ value => updateField("experience", value) }
+          />
         </UnitCell>
         <UnitCell>
-          <TechsList isEditable={ isEditable } />
+          <TechsList
+            technologies={ technologies }
+            isEditable={ isEditable }
+          />
         </UnitCell>
         <UnitCell>
           <StaticValue>{ hull }</StaticValue>
