@@ -1,6 +1,6 @@
 export default [
   {
-    name: "Min",
+    name: "Miner",
     noOfTokens: 4,
     hull: 1,
     upkeepCost: 0,
@@ -24,8 +24,8 @@ export default [
     hull: 2,
     upkeepCost: 2,
     availableTechs: [
-      "Explor. 1",
-      "Explor. 2",
+      "Exploration 1",
+      "Exploration 2",
     ],
   }
 ];

@@ -3,11 +3,11 @@ import styled, { css } from "styled-components";
 
 const Wrapper = styled.div`
   background: #DDD;
-  font-size: 13px;
+  font-size: 11px;
   letter-spacing: 0.75px;
   font-style: italic;
   font-weight: 700;
-  padding: 4px 10px;
+  padding: 2px 4px;
   border-radius: 5px;
   margin: 5px;
 
