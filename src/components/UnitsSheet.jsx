@@ -74,23 +74,31 @@ const Wrapper = styled.div`
 
 @observer
 class UnitsSheet extends React.Component {
+  constructor(props) {
+    super(props);
+    this.scrollRef = React.createRef();
+  }
+
   handleListReorder(newState) {
     const { reorderUnits } = sheetStore;
     const ids = _.map(newState, s => s.id);
     reorderUnits(ids);
   }
+  
+  onAddNewUnit() {
+    const { addNewUnit } = sheetStore;
+    addNewUnit();
+    setTimeout(this.scrollRef.current.scrollToBottom, 250);
+  }
 
   render() {
-    const {
-      units,
-      addNewUnit,
-    } = sheetStore;
+    const { units } = sheetStore;
     return (
       <Wrapper>
         <TitleBar title="Units">
           <IconButton
             icon={ <BsFillPlusSquareFill /> }
-            onClick={ addNewUnit }
+            onClick={ this.onAddNewUnit.bind(this) }
           />
         </TitleBar>
         <div className="units-content">
@@ -108,7 +116,10 @@ class UnitsSheet extends React.Component {
             <UnitLabel title="" />
           </div>
           <div className="units-rows">
-            <Scrollbars autoHide={ false }>
+            <Scrollbars
+              autoHide={ false }
+              ref={ this.scrollRef }
+            >
               <div className="units-rows__wrapper">
 
                 <ReactSortable

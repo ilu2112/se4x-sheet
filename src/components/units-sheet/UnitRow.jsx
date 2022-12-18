@@ -51,7 +51,6 @@ const Wrapper = styled.div`
   }
 `;
 
-
 class UnitRow extends React.Component {
   constructor(props) {
     super(props);
