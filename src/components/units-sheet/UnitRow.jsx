@@ -3,10 +3,15 @@ import styled from "styled-components";
 import {
   BsPencilSquare,
   BsFillXSquareFill,
+  BsFillCheckSquareFill,
 } from "react-icons/bs";
 import {
   RxDragHandleDots2,
 } from "react-icons/rx";
+import {
+  FiCopy,
+} from "react-icons/fi";
+
 import NumberStepInput from "../common/NumberStepInput";
 import UnitCell from "./UnitCell";
 import StaticValue from "./StaticValue";
@@ -52,20 +57,6 @@ const Wrapper = styled.div`
 `;
 
 class UnitRow extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isEditable: false,
-    };
-    this.toggleIsEditable = this.toggleIsEditable.bind(this);
-  }
-
-  toggleIsEditable() {
-    this.setState({
-      isEditable: !this.state.isEditable,
-    });
-  }
-
   render() {
     const {
       id,
@@ -79,13 +70,13 @@ class UnitRow extends React.Component {
       hull,
       upkeepCost,
       technologies,
-      updateField,
-    } = this.props;
-    const {
       isEditable,
-    } = this.state;
+      updateField,
+      toggleIsEditable,
+    } = this.props;
     const { 
       removeUnit,
+      copyUnit,
     } = sheetStore;
     return (
       <Wrapper>
@@ -158,10 +149,15 @@ class UnitRow extends React.Component {
           />
         </UnitCell>
         <UnitCell>
-          <Toggler
-            icon={ <BsPencilSquare /> }
-            enabled={ isEditable }
-            onClick={ this.toggleIsEditable }
+          <IconButton
+            icon={ isEditable ? <BsFillCheckSquareFill /> : <BsPencilSquare /> }
+            onClick={ toggleIsEditable }
+          />
+          <IconButton
+            icon={ <FiCopy /> }
+            disabled={ !isEditable }
+            withLeftMargin
+            onClick={ () => copyUnit(id) }
           />
           <IconButton
             icon={ <BsFillXSquareFill /> }

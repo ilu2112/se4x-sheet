@@ -31,6 +31,7 @@ export default class SheetModel {
     this.addNewUnit = this.addNewUnit.bind(this);
     this.removeUnit = this.removeUnit.bind(this);
     this.reorderUnits = this.reorderUnits.bind(this);
+    this.copyUnit = this.copyUnit.bind(this);
   }
 
   @action
@@ -184,5 +185,15 @@ export default class SheetModel {
   @action
   reorderUnits(ids) {
     this.units = _.sortBy(this.units, u => ids.indexOf(u.id));
+  }
+
+  @action
+  copyUnit(id) {
+    const index = _.findIndex(this.units, u => u.id === id);
+    const unit = this.units[index];
+    this.units.splice(index + 1, 0, new UnitModel({
+      ...unit,
+      id: parseInt(Math.random() * 1000000),
+    }));
   }
 }

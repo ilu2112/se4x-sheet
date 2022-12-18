@@ -16,6 +16,8 @@ export default class UnitModel {
   @observable hull;
   @observable upkeepCost;
 
+  @observable isEditable;
+
   constructor({
     id,
     name,
@@ -28,6 +30,7 @@ export default class UnitModel {
     technologies,
     hull,
     upkeepCost,
+    isEditable,
   }) {
     this.id = id;
     this.name = name || "-";
@@ -39,6 +42,7 @@ export default class UnitModel {
     this.experience = experience || 0;
     this.hull = hull || 1;
     this.upkeepCost = upkeepCost || this.quantity * this.hull;
+    this.isEditable = isEditable || false;
 
     this.technologies = [];
     for (let technology of technologies) {
@@ -48,6 +52,7 @@ export default class UnitModel {
     }
 
     this.updateField = this.updateField.bind(this);
+    this.toggleIsEditable = this.toggleIsEditable.bind(this);
   }
 
   @action
@@ -78,5 +83,10 @@ export default class UnitModel {
         name => new UnitTechnologyModel({ name })
       );
     }
+  }
+
+  @action
+  toggleIsEditable() {
+    this.isEditable = !this.isEditable;
   }
 }
