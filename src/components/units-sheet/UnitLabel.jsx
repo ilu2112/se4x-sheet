@@ -17,16 +17,22 @@ const Wrapper = styled.div`
   box-sizing: border-box;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  .sublabel {
+    display: block;
+  }
 `;
 
 class UnitLabel extends React.Component {
   render() {
-    const { title } = this.props;
+    const { title, subtitle } = this.props;
     return (
       <Wrapper className="unit-label">
         { title }
+        { subtitle && <div className="sublabel">{ subtitle }</div> }
       </Wrapper>
     );
   }

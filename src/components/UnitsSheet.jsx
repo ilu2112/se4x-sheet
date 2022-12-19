@@ -4,6 +4,7 @@ import { Scrollbars } from "react-custom-scrollbars";
 import { observer } from "mobx-react";
 import { BsFillPlusSquareFill } from "react-icons/bs";
 import { ReactSortable } from "react-sortablejs";
+import _ from "lodash";
 
 import IconButton from "./common/IconButton";
 import TitleBar from "./common/TitleBar";
@@ -92,7 +93,10 @@ class UnitsSheet extends React.Component {
   }
 
   render() {
-    const { units } = sheetStore;
+    const {
+      units,
+      totalUpkeepCost,
+    } = sheetStore;
     return (
       <Wrapper>
         <TitleBar title="Units">
@@ -112,7 +116,7 @@ class UnitsSheet extends React.Component {
             <UnitLabel title="Exp" />
             <UnitLabel title="Tech" />
             <UnitLabel title="Hull" />
-            <UnitLabel title="Upkp" />
+            <UnitLabel title="Upkp" subtitle={`(${totalUpkeepCost})`} />
             <UnitLabel title="" />
           </div>
           <div className="units-rows">

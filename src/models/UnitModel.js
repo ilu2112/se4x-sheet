@@ -1,4 +1,4 @@
-import { action, observable } from "mobx";
+import { action, observable, computed } from "mobx";
 import _ from "lodash";
 import UnitTechnologyModel from "./UnitTechnologyModel";
 import unitsSettings from "../config/units";
@@ -15,6 +15,7 @@ export default class UnitModel {
   @observable technologies = [];
   @observable hull;
   @observable upkeepCost;
+  @observable singularUpkeepCost;
 
   @observable isEditable;
 
@@ -30,6 +31,7 @@ export default class UnitModel {
     technologies,
     hull,
     upkeepCost,
+    singularUpkeepCost,
     isEditable,
   }) {
     this.id = id;
@@ -41,7 +43,8 @@ export default class UnitModel {
     this.tactic = tactic || 0;
     this.experience = experience || 0;
     this.hull = hull || 1;
-    this.upkeepCost = upkeepCost || this.quantity * this.hull;
+    this.upkeepCost = _.isNil(upkeepCost) ? this.quantity * this.hull : upkeepCost;
+    this.singularUpkeepCost = singularUpkeepCost || 0;
     this.isEditable = isEditable || false;
 
     this.technologies = [];
@@ -53,6 +56,7 @@ export default class UnitModel {
 
     this.updateField = this.updateField.bind(this);
     this.toggleIsEditable = this.toggleIsEditable.bind(this);
+    this.isUpkeepCostUnmodified = this.isUpkeepCostUnmodified.bind(this);
   }
 
   @action
@@ -61,7 +65,12 @@ export default class UnitModel {
       this.updateName(value);
       return;
     }
-    this[fieldName] = parseInt(value, 10) || 0;
+    const parsedValue = parseInt(value, 10) || 0;
+    if (fieldName === "quantity") {
+      this.updateQuantity(parsedValue);
+      return;
+    }
+    this[fieldName] = parsedValue;
   }
 
   updateName(name) {
@@ -78,15 +87,33 @@ export default class UnitModel {
     if (oldUnitType !== newUnitType) {
       const unitConfig = _.find(unitsSettings, s => s.type === newUnitType);
       this.hull = unitConfig.hull;
-      this.upkeepCost = unitConfig.upkeepCost * this.quantity;
+      this.singularUpkeepCost = unitConfig.upkeepCost;
+      this.upkeepCost = this.singularUpkeepCost * this.quantity;
       this.technologies = unitConfig.availableTechs.map(
         name => new UnitTechnologyModel({ name })
       );
     }
   }
 
+  updateQuantity(quantity) {
+    const wasUpkeepCostUnmodified = this.isUpkeepCostUnmodified();
+    this.quantity = quantity;
+    if (wasUpkeepCostUnmodified) {
+      this.upkeepCost = this.singularUpkeepCost * this.quantity;
+    }
+  }
+
   @action
   toggleIsEditable() {
     this.isEditable = !this.isEditable;
+  }
+
+  @computed
+  get unmodifiedUpkeepCost() {
+    return this.singularUpkeepCost * this.quantity;
+  }
+
+  isUpkeepCostUnmodified() {
+    return this.upkeepCost === this.unmodifiedUpkeepCost;
   }
 }

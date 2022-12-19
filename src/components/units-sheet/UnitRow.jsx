@@ -71,6 +71,7 @@ class UnitRow extends React.Component {
       upkeepCost,
       technologies,
       isEditable,
+      isUpkeepCostUnmodified,
       updateField,
       toggleIsEditable,
     } = this.props;
@@ -141,7 +142,7 @@ class UnitRow extends React.Component {
         <UnitCell>
           <StaticValue>{ hull }</StaticValue>
         </UnitCell>
-        <UnitCell>
+        <UnitCell withBackground={ !isUpkeepCostUnmodified() }>
           <NumberStepInput
             value={ upkeepCost }
             isEditable={ isEditable }

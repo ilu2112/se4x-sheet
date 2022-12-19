@@ -1,4 +1,4 @@
-import { action, observable } from "mobx";
+import { action, observable, computed } from "mobx";
 import _ from "lodash";
 
 import technologiesConfigs from "../config/technologies";
@@ -216,5 +216,10 @@ export default class SheetModel {
       ...unit,
       id: parseInt(Math.random() * 1000000),
     }));
+  }
+
+  @computed
+  get totalUpkeepCost() {
+    return _.sumBy(this.units, 'upkeepCost');
   }
 }
