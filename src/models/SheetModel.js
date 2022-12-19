@@ -58,6 +58,26 @@ export default class SheetModel {
     this.activeProductionColumn = this.productionColumns[0];
     this.shouldSyncTechSpendings = false;
     this.units = [];
+
+    this.addNewUnit();
+    this.units[0].updateField("name", "SY-1");
+    this.units[0].quantity = 4;
+    this.units[0].isEditable = false;
+    this.addNewUnit();
+    this.units[1].updateField("name", "Miner-1");
+    this.units[1].isEditable = false;
+    this.addNewUnit();
+    this.units[2].updateField("name", "SC-1");
+    this.units[2].isEditable = false;
+    this.addNewUnit();
+    this.units[3].updateField("name", "SC-2");
+    this.units[3].isEditable = false;
+    this.addNewUnit();
+    this.units[4].updateField("name", "SC-3");
+    this.units[4].isEditable = false;
+    this.addNewUnit();
+    this.units[5].updateField("name", "FLAG");
+    this.units[5].isEditable = false;
   }
 
   _setState(state) {

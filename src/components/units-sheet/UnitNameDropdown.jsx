@@ -6,6 +6,9 @@ import unitsSettings from "../../config/units";
 let dropdownOptions = _.map(unitsSettings, setting => {
   const { type, noOfTokens, firstTokenIndex } = setting;
   const result = [];
+  if (noOfTokens === 1) {
+    return type;
+  }
   for (let i = 1; i <= noOfTokens; i++) {
     result.push(`${type}-${firstTokenIndex - 1 + i}`);
   }
