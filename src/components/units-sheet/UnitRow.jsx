@@ -94,6 +94,8 @@ class UnitRow extends React.Component {
         <UnitCell>
           <NumberStepInput
             value={ quantity }
+            minValue={ 1 }
+            maxValue={ 6 }
             isEditable={ isEditable }
             updateFunction={ value => updateField("quantity", value) }
           />
@@ -101,6 +103,7 @@ class UnitRow extends React.Component {
         <UnitCell>
           <NumberStepInput
             value={ attack }
+            minValue={ 0 }
             isEditable={ isEditable }
             updateFunction={ value => updateField("attack", value) }
           />
@@ -108,6 +111,7 @@ class UnitRow extends React.Component {
         <UnitCell>
           <NumberStepInput
             value={ defense }
+            minValue={ 0 }
             isEditable={ isEditable }
             updateFunction={ value => updateField("defense", value) }
           />
@@ -115,6 +119,7 @@ class UnitRow extends React.Component {
         <UnitCell>
           <NumberStepInput
             value={ move }
+            minValue={ 1 }
             isEditable={ isEditable }
             updateFunction={ value => updateField("move", value) }
           />
@@ -122,6 +127,7 @@ class UnitRow extends React.Component {
         <UnitCell>
           <NumberStepInput
             value={ tactic }
+            minValue={ 0 }
             isEditable={ isEditable }
             updateFunction={ value => updateField("tactic", value) }
           />
@@ -129,6 +135,9 @@ class UnitRow extends React.Component {
         <UnitCell>
           <NumberStepInput
             value={ experience }
+            minValue={ 0 }
+            maxValue={ 3 }
+            labels={ ["S", "V", "E", "L"] }
             isEditable={ isEditable }
             updateFunction={ value => updateField("experience", value) }
           />
@@ -145,6 +154,7 @@ class UnitRow extends React.Component {
         <UnitCell withBackground={ !isUpkeepCostUnmodified() }>
           <NumberStepInput
             value={ upkeepCost }
+            minValue={ 0 }
             isEditable={ isEditable }
             updateFunction={ value => updateField("upkeepCost", value) }
           />

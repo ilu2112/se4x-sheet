@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import _ from "lodash";
 import {
   BsFillPlusSquareFill,
   BsFillDashSquareFill,
@@ -56,8 +57,28 @@ class NumberStepInput extends React.Component {
     const {
       updateFunction,
       value,
+      maxValue,
+      minValue,
     } = this.props;
+    const newValue = value + delta;
+    if (!_.isNil(maxValue) && newValue > maxValue) {
+      return;
+    }
+    if (!_.isNil(minValue) && newValue < minValue) {
+      return;
+    }
     updateFunction(value + delta);
+  }
+
+  getDisplayValue() {
+    const {
+      labels,
+      value,
+    } = this.props;
+    if (labels) {
+      return labels[value];
+    }
+    return value;
   }
 
   render() {
@@ -68,7 +89,7 @@ class NumberStepInput extends React.Component {
     return (
       <Wrapper isEditable={ isEditable } className="nsi">
         <div className="nsi__value">
-          { value }
+          { this.getDisplayValue() }
         </div>
         {isEditable &&
           <div
