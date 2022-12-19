@@ -2,7 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { Scrollbars } from "react-custom-scrollbars";
 import { observer } from "mobx-react";
-import { BsFillPlusSquareFill } from "react-icons/bs";
+import {
+  BsPencilSquare,
+  BsFillPlusSquareFill,
+  BsFillCheckSquareFill,
+} from "react-icons/bs";
 import { ReactSortable } from "react-sortablejs";
 import _ from "lodash";
 
@@ -78,6 +82,9 @@ class UnitsSheet extends React.Component {
   constructor(props) {
     super(props);
     this.scrollRef = React.createRef();
+    this.state = {
+      allUnitsEditable: false
+    };
   }
 
   handleListReorder(newState) {
@@ -92,16 +99,33 @@ class UnitsSheet extends React.Component {
     setTimeout(this.scrollRef.current.scrollToBottom, 250);
   }
 
+  onAllUnitEditableClick() {
+    const newValue = !this.state.allUnitsEditable;
+    this.setState({
+      allUnitsEditable: newValue
+    });
+    const { setAllUnitsEditable } = sheetStore;
+    setAllUnitsEditable(newValue);
+  }
+
   render() {
     const {
       units,
       totalUpkeepCost,
     } = sheetStore;
+    const {
+      allUnitsEditable,
+    } = this.state;
     return (
       <Wrapper>
         <TitleBar title="Units">
+        <IconButton
+            icon={ allUnitsEditable ? <BsFillCheckSquareFill /> : <BsPencilSquare /> }
+            onClick={ this.onAllUnitEditableClick.bind(this) }
+          />
           <IconButton
             icon={ <BsFillPlusSquareFill /> }
+            withLeftMargin
             onClick={ this.onAddNewUnit.bind(this) }
           />
         </TitleBar>

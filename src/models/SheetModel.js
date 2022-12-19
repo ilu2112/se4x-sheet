@@ -37,6 +37,7 @@ export default class SheetModel {
     this.removeUnit = this.removeUnit.bind(this);
     this.reorderUnits = this.reorderUnits.bind(this);
     this.copyUnit = this.copyUnit.bind(this);
+    this.setAllUnitsEditable = this.setAllUnitsEditable.bind(this);
   }
 
   @action
@@ -226,5 +227,12 @@ export default class SheetModel {
   @computed
   get totalUpkeepCost() {
     return _.sumBy(this.units, 'upkeepCost');
+  }
+
+  @action
+  setAllUnitsEditable(value) {
+    for (let unit of this.units) {
+      unit.isEditable = value;
+    }
   }
 }
