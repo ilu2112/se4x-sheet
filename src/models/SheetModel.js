@@ -173,6 +173,7 @@ export default class SheetModel {
         technologies: [],
         hull: 0,
         upkeepCost: 0,
+        isEditable: true,
       })
     );
   }

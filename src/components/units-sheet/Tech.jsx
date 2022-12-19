@@ -3,13 +3,14 @@ import styled, { css } from "styled-components";
 
 const Wrapper = styled.div`
   background: #DDD;
-  font-size: 11px;
-  letter-spacing: 0.75px;
+  font-size: 10px;
+  letter-spacing: 0.5px;
   font-style: italic;
   font-weight: 700;
   padding: 2px 4px;
   border-radius: 5px;
   margin: 5px;
+  text-align: center;
 
   ${props => !props.owned && css`
     opacity: .25;

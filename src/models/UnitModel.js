@@ -76,7 +76,7 @@ export default class UnitModel {
     const newUnitType = name.split("-")[0];
     this.name = name;
     if (oldUnitType !== newUnitType) {
-      const unitConfig = _.find(unitsSettings, s => s.name === newUnitType);
+      const unitConfig = _.find(unitsSettings, s => s.type === newUnitType);
       this.hull = unitConfig.hull;
       this.upkeepCost = unitConfig.upkeepCost * this.quantity;
       this.technologies = unitConfig.availableTechs.map(

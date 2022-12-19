@@ -4,15 +4,15 @@ import _ from "lodash";
 import unitsSettings from "../../config/units";
 
 let dropdownOptions = _.map(unitsSettings, setting => {
-  const { name, noOfTokens } = setting;
+  const { type, noOfTokens, firstTokenIndex } = setting;
   const result = [];
   for (let i = 1; i <= noOfTokens; i++) {
-    result.push(`${name}-${i}`);
+    result.push(`${type}-${firstTokenIndex - 1 + i}`);
   }
   return result;
 });
 dropdownOptions = _.flatten(dropdownOptions);
-dropdownOptions = _.sortBy(dropdownOptions);
+dropdownOptions = _.sortBy(dropdownOptions, s => s.toLowerCase());
 
 const Wrapper = styled.div`
   select {
@@ -28,7 +28,7 @@ const Wrapper = styled.div`
     letter-spacing: 0.75px;
     font-weight: 700;
     font-style: italic;
-    padding: 2px;
+    padding: 2px 0;
   }
 
   .static-value {
