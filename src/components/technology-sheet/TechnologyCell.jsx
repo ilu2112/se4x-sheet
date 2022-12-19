@@ -15,12 +15,12 @@ const Wrapper = styled.div`
   justify-content: space-between;
   user-select: none;
 
-  &:nth-of-type(3n + 1) {
+  &:nth-of-type(4n) {
     border-right: none;
   }
 
   .tech-title {
-    font-size: 15px;
+    font-size: 13px;
     letter-spacing: 0.75px;
     font-style: italic;
     font-weight: 700;

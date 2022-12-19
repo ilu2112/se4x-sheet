@@ -1,24 +1,145 @@
 import React from "react";
 import styled from "styled-components";
+import { Scrollbars } from "react-custom-scrollbars";
+import { observer } from "mobx-react";
+import { BsFillPlusSquareFill } from "react-icons/bs";
+import { ReactSortable } from "react-sortablejs";
+import _ from "lodash";
+
+import IconButton from "./common/IconButton";
 import TitleBar from "./common/TitleBar";
+import UnitLabel from "./units-sheet/UnitLabel";
+import UnitRow from "./units-sheet/UnitRow";
+import { sheetStore } from "../models/store";
 
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   user-select: none;
   display: grid;
-  grid-template-rows: repeat(27, 1fr);
+  grid-template-rows: repeat(18, 1fr);
   border: 1px solid #000;
   border-top: none;
-  opacity: .25;
-  cursor: not-allowed;
+  
+  .units-content {
+    grid-row: 2 / 19;
+    display: grid;
+    grid-template-rows: repeat(15, 1fr);
+  }
+
+  .units-labels {
+    display: grid;
+    grid-template-columns: repeat(14, 1fr);
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    background: #DDD;
+    grid-row: 1 / 2;
+
+    .unit-label {
+      &:nth-of-type(11n + 1) {
+        grid-column: 1 / 3;
+      }
+
+      &:nth-of-type(11n + 8) {
+        grid-column: 9 / 11;
+      }
+  
+      &:nth-of-type(11n) {
+        grid-column: 13 / 15;
+      }
+    }
+  }
+
+  .units-rows {
+    grid-row: 2 / 16;
+  }
+
+  .sortable-chosen {
+    border-top: 1px solid #CCC;
+    border-left: 1px solid #CCC;
+  }
+
+  .sortable-ghost {
+    position: relative;
+    &:after {
+      background: #CCC;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      content: "";
+    }
+  }
 `;
 
+@observer
 class UnitsSheet extends React.Component {
+  constructor(props) {
+    super(props);
+    this.scrollRef = React.createRef();
+  }
+
+  handleListReorder(newState) {
+    const { reorderUnits } = sheetStore;
+    const ids = _.map(newState, s => s.id);
+    reorderUnits(ids);
+  }
+  
+  onAddNewUnit() {
+    const { addNewUnit } = sheetStore;
+    addNewUnit();
+    setTimeout(this.scrollRef.current.scrollToBottom, 250);
+  }
+
   render() {
+    const {
+      units,
+      totalUpkeepCost,
+    } = sheetStore;
     return (
       <Wrapper>
-        <TitleBar title="Units" />
+        <TitleBar title="Units">
+          <IconButton
+            icon={ <BsFillPlusSquareFill /> }
+            onClick={ this.onAddNewUnit.bind(this) }
+          />
+        </TitleBar>
+        <div className="units-content">
+          <div className="units-labels">
+            <UnitLabel title="Group" />
+            <UnitLabel title="#" />
+            <UnitLabel title="Atk" />
+            <UnitLabel title="Def" />
+            <UnitLabel title="Mov" />
+            <UnitLabel title="Tac" />
+            <UnitLabel title="Exp" />
+            <UnitLabel title="Tech" />
+            <UnitLabel title="Hull" />
+            <UnitLabel title="Upkp" subtitle={`(${totalUpkeepCost})`} />
+            <UnitLabel title="" />
+          </div>
+          <div className="units-rows">
+            <Scrollbars
+              autoHide={ false }
+              ref={ this.scrollRef }
+            >
+              <div className="units-rows__wrapper">
+
+                <ReactSortable
+                  list={ units }
+                  setList={ this.handleListReorder.bind(this) }
+                  handle=".drag-handle"
+                >
+                  {units.map(props =>
+                    <UnitRow key={ props.id } {...props} />
+                  )}
+                </ReactSortable>
+
+              </div>
+            </Scrollbars>
+          </div>
+        </div>
       </Wrapper>
     );
   }

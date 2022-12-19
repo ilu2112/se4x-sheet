@@ -3,7 +3,7 @@ import { TECH_LEVEL_STATE } from "../models/enums";
 export default [
   {
     id: 1,
-    name: 'Ship Size',
+    name: "Ship Size",
     techLevels: [
       {
         level: 1,
@@ -38,7 +38,7 @@ export default [
   },
   { 
     id: 2,
-    name: 'Ship Yard',
+    name: "Ship Yard",
     techLevels: [
       {
         level: 1,
@@ -61,7 +61,7 @@ export default [
   },
   {
     id: 3,
-    name: 'Military Acad.',
+    name: "Military Acad.",
     techLevels: [
       {
         level: 0,
@@ -76,11 +76,38 @@ export default [
         level: 2,
         cost: 20,
       },
+      {
+        level: 3,
+        isPlaceholder: true,
+      },
     ],
   },
   {
     id: 4,
-    name: 'Attack',
+    name: "Terraforming",
+    techLevels: [
+      {
+        level: 0,
+        cost: 0,
+        state: TECH_LEVEL_STATE.OWNED,
+      },
+      {
+        level: 1,
+        cost: 20,
+      },
+      {
+        level: 2,
+        cost: 25,
+      },
+      {
+        level: 3,
+        isPlaceholder: true,
+      },
+    ],
+  },
+  {
+    id: 5,
+    name: "Attack",
     techLevels: [
       {
         level: 0,
@@ -114,8 +141,8 @@ export default [
     ],
   },
   {
-    id: 5,
-    name: 'Ground',
+    id: 6,
+    name: "Ground",
     techLevels: [
       {
         level: 1,
@@ -137,8 +164,8 @@ export default [
     ],
   },
   {
-    id: 6,
-    name: 'Boarding',
+    id: 7,
+    name: "Boarding",
     techLevels: [
       {
         level: 0,
@@ -152,47 +179,16 @@ export default [
       {
         level: 2,
         cost: 25,
-      },
-    ],
-  },
-  {
-    id: 7,
-    name: 'Defense',
-    techLevels: [
-      {
-        level: 0,
-        cost: 0,
-        state: TECH_LEVEL_STATE.OWNED,
-      },
-      {
-        level: 1,
-        cost: 20,
-      },
-      {
-        level: 2,
-        cost: 30,
       },
       {
         level: 3,
-        cost: 25,
-      },
-      {
-        level: 4,
-        isPlaceholder: true,
-      },
-      {
-        level: 5,
-        isPlaceholder: true,
-      },
-      {
-        level: 6,
         isPlaceholder: true,
       },
     ],
   },
   {
     id: 8,
-    name: 'Terraforming',
+    name: "Security",
     techLevels: [
       {
         level: 0,
@@ -201,11 +197,11 @@ export default [
       },
       {
         level: 1,
-        cost: 20,
+        cost: 15,
       },
       {
         level: 2,
-        cost: 25,
+        cost: 15,
       },
       {
         level: 3,
@@ -215,7 +211,7 @@ export default [
   },
   {
     id: 9,
-    name: 'Security',
+    name: "Defense",
     techLevels: [
       {
         level: 0,
@@ -224,34 +220,15 @@ export default [
       },
       {
         level: 1,
-        cost: 15,
+        cost: 20,
       },
       {
         level: 2,
-        cost: 15,
-      },
-    ],
-  },
-  {
-    id: 10,
-    name: 'Tactics',
-    techLevels: [
-      {
-        level: 0,
-        cost: 0,
-        state: TECH_LEVEL_STATE.OWNED,
-      },
-      {
-        level: 1,
-        cost: 15,
-      },
-      {
-        level: 2,
-        cost: 15,
+        cost: 30,
       },
       {
         level: 3,
-        cost: 15,
+        cost: 25,
       },
       {
         level: 4,
@@ -268,8 +245,8 @@ export default [
     ],
   },
   {
-    id: 11,
-    name: 'Cloaking',
+    id: 10,
+    name: "Cloaking",
     techLevels: [
       {
         level: 0,
@@ -291,8 +268,8 @@ export default [
     ],
   },
   {
-    id: 12,
-    name: 'Exploration',
+    id: 11,
+    name: "Exploration",
     techLevels: [
       {
         level: 0,
@@ -307,11 +284,38 @@ export default [
         level: 2,
         cost: 15,
       },
+      {
+        level: 3,
+        isPlaceholder: true,
+      },
+    ],
+  },
+  {
+    id: 12,
+    name: "Tractor Beam",
+    techLevels: [
+      {
+        level: 0,
+        cost: 0,
+        state: TECH_LEVEL_STATE.OWNED,
+      },
+      {
+        level: 1,
+        cost: 10,
+      },
+      {
+        level: 2,
+        isPlaceholder: true,
+      },
+      {
+        level: 3,
+        isPlaceholder: true,
+      },
     ],
   },
   {
     id: 13,
-    name: 'Move',
+    name: "Move",
     techLevels: [
       {
         level: 1,
@@ -346,7 +350,7 @@ export default [
   },
   {
     id: 14,
-    name: 'Scanners',
+    name: "Scanners",
     techLevels: [
       {
         level: 0,
@@ -369,7 +373,7 @@ export default [
   },
   {
     id: 15,
-    name: 'Fast BC',
+    name: "Fast BC",
     techLevels: [
       {
         level: 0,
@@ -383,12 +387,16 @@ export default [
       {
         level: 2,
         cost: 10,
+      },
+      {
+        level: 3,
+        isPlaceholder: true,
       },
     ],
   },
   {
     id: 16,
-    name: 'Fighters',
+    name: "Mines",
     techLevels: [
       {
         level: 0,
@@ -397,19 +405,42 @@ export default [
       },
       {
         level: 1,
-        cost: 25,
+        cost: 30,
       },
       {
         level: 2,
-        cost: 25,
+        isPlaceholder: true,
       },
       {
         level: 3,
-        cost: 25,
+        isPlaceholder: true,
+      },
+    ],
+  },
+  {
+    id: 17,
+    name: "Tactics",
+    techLevels: [
+      {
+        level: 0,
+        cost: 0,
+        state: TECH_LEVEL_STATE.OWNED,
+      },
+      {
+        level: 1,
+        cost: 15,
+      },
+      {
+        level: 2,
+        cost: 15,
+      },
+      {
+        level: 3,
+        cost: 15,
       },
       {
         level: 4,
-        cost: 25,
+        isPlaceholder: true,
       },
       {
         level: 5,
@@ -422,8 +453,8 @@ export default [
     ],
   },
   {
-    id: 17,
-    name: 'Mine Sweeper',
+    id: 18,
+    name: "Mine Sweeper",
     techLevels: [
       {
         level: 0,
@@ -445,27 +476,8 @@ export default [
     ],
   },
   {
-    id: 18,
-    name: 'Mines',
-    techLevels: [
-      {
-        level: 0,
-        cost: 0,
-        state: TECH_LEVEL_STATE.OWNED,
-      },
-      {
-        level: 1,
-        cost: 30,
-      },
-      {
-        level: 2,
-        isPlaceholder: true,
-      }
-    ],
-  },
-  {
     id: 19,
-    name: 'Point Def.',
+    name: "Point Def.",
     techLevels: [
       {
         level: 0,
@@ -484,23 +496,11 @@ export default [
         level: 3,
         cost: 20,
       },
-      {
-        level: 4,
-        isPlaceholder: true,
-      },
-      {
-        level: 5,
-        isPlaceholder: true,
-      },
-      {
-        level: 6,
-        isPlaceholder: true,
-      },
     ],
   },
   {
     id: 20,
-    name: 'Advanced Con.',
+    name: "Advanced Con.",
     techLevels: [
       {
         level: 0,
@@ -523,7 +523,7 @@ export default [
   },
   {
     id: 21,
-    name: 'Tractor Beam',
+    name: "Fighters",
     techLevels: [
       {
         level: 0,
@@ -532,22 +532,33 @@ export default [
       },
       {
         level: 1,
-        cost: 10,
+        cost: 25,
       },
       {
         level: 2,
+        cost: 25,
+      },
+      {
+        level: 3,
+        cost: 25,
+      },
+      {
+        level: 4,
+        cost: 25,
+      },
+      {
+        level: 5,
+        isPlaceholder: true,
+      },
+      {
+        level: 6,
         isPlaceholder: true,
       },
     ],
   },
   {
     id: 22,
-    name: '',
-    techLevels: [],
-  },
-  {
-    id: 23,
-    name: 'Anti-Replicator',
+    name: "Anti-Replicator",
     techLevels: [
       {
         level: 0,
@@ -569,8 +580,8 @@ export default [
     ],
   },
   {
-    id: 24,
-    name: 'Shield Proj.',
+    id: 23,
+    name: "Shield Proj.",
     techLevels: [
       {
         level: 0,
@@ -585,6 +596,15 @@ export default [
         level: 2,
         isPlaceholder: true,
       },
+      {
+        level: 3,
+        isPlaceholder: true,
+      },
     ],
+  },
+  {
+    id: 24,
+    name: "",
+    techLevels: [],
   },
 ]
