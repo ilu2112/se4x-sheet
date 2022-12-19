@@ -19,7 +19,12 @@ export default class SheetModel {
     if (_.isEmpty(initialState)) {
       this.reset();
     } else {
-      this._setState(initialState);
+      try {
+        this._setState(initialState);
+      } catch (e) {
+        console.log("Could not set intialState - resetting!", e);
+        this.reset();
+      }
     }
 
     this.reset = this.reset.bind(this);
