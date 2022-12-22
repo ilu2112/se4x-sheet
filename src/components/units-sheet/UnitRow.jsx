@@ -16,7 +16,6 @@ import NumberStepInput from "../common/NumberStepInput";
 import UnitCell from "./UnitCell";
 import StaticValue from "./StaticValue";
 import TechsList from "./TechsList";
-import Toggler from "../common/Toggler";
 import IconButton from "../common/IconButton";
 import UnitNameDropdown from "./UnitNameDropdown";
 import { sheetStore } from "../../models/store";
@@ -136,8 +135,8 @@ class UnitRow extends React.Component {
           <NumberStepInput
             value={ experience }
             minValue={ 0 }
-            maxValue={ 3 }
-            labels={ ["S", "V", "E", "L"] }
+            maxValue={ 4 }
+            labels={ ["G", "S", "V", "E", "L"] }
             isEditable={ isEditable }
             updateFunction={ value => updateField("experience", value) }
           />
