@@ -33,7 +33,7 @@ const Wrapper = styled.div`
     grid-column: 1 / 14;
     grid-row: 2 / 19;
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(9, 1fr);
     grid-template-rows: repeat(17, 1fr);
   }
 
