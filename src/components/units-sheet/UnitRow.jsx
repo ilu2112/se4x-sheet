@@ -65,6 +65,10 @@ class UnitRow extends React.Component {
       defense,
       move,
       tactic,
+      canGainExp,
+      reactThreshold,
+      immovable,
+      unupgradable,
       experience,
       hull,
       upkeepCost,
@@ -100,46 +104,64 @@ class UnitRow extends React.Component {
           />
         </UnitCell>
         <UnitCell>
-          <NumberStepInput
-            value={ attack }
-            minValue={ 0 }
-            isEditable={ isEditable }
-            updateFunction={ value => updateField("attack", value) }
-          />
+          { unupgradable && <StaticValue>-</StaticValue> }
+          { !unupgradable && 
+            <NumberStepInput
+              value={ attack }
+              minValue={ 0 }
+              isEditable={ isEditable }
+              updateFunction={ value => updateField("attack", value) }
+            />
+          }
         </UnitCell>
         <UnitCell>
-          <NumberStepInput
-            value={ defense }
-            minValue={ 0 }
-            isEditable={ isEditable }
-            updateFunction={ value => updateField("defense", value) }
-          />
+          { unupgradable && <StaticValue>-</StaticValue> }
+          { !unupgradable &&
+            <NumberStepInput
+              value={ defense }
+              minValue={ 0 }
+              isEditable={ isEditable }
+              updateFunction={ value => updateField("defense", value) }
+            />
+          }
         </UnitCell>
         <UnitCell>
-          <NumberStepInput
-            value={ move }
-            minValue={ 1 }
-            isEditable={ isEditable }
-            updateFunction={ value => updateField("move", value) }
-          />
+          { immovable && <StaticValue>-</StaticValue> }
+          { !immovable &&
+            <NumberStepInput
+              value={ move }
+              minValue={ 1 }
+              maxValue={ 7 }
+              isEditable={ isEditable }
+              updateFunction={ value => updateField("move", value) }
+              superscript="R"
+              superscriptThreshold={ reactThreshold }
+            />
+          }
         </UnitCell>
         <UnitCell>
-          <NumberStepInput
-            value={ tactic }
-            minValue={ 0 }
-            isEditable={ isEditable }
-            updateFunction={ value => updateField("tactic", value) }
-          />
+          { unupgradable && <StaticValue>-</StaticValue> }
+          { !unupgradable &&
+            <NumberStepInput
+              value={ tactic }
+              minValue={ 0 }
+              isEditable={ isEditable }
+              updateFunction={ value => updateField("tactic", value) }
+            />
+          }
         </UnitCell>
         <UnitCell>
-          <NumberStepInput
-            value={ experience }
-            minValue={ 0 }
-            maxValue={ 4 }
-            labels={ ["G", "S", "V", "E", "L"] }
-            isEditable={ isEditable }
-            updateFunction={ value => updateField("experience", value) }
-          />
+          { !canGainExp && <StaticValue>-</StaticValue> }
+          { canGainExp && 
+            <NumberStepInput
+              value={ experience }
+              minValue={ 0 }
+              maxValue={ 4 }
+              labels={ ["G", "S", "V", "E", "L"] }
+              isEditable={ isEditable }
+              updateFunction={ value => updateField("experience", value) }
+            />
+          }
         </UnitCell>
         <UnitCell>
           <TechsList

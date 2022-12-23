@@ -7,6 +7,8 @@ export default [
     cost: 6,
     hull: 1,
     upkeepCost: 1,
+    canGainExp: true,
+    reactThreshold: 3,
     availableTechs: [
       "Point Def 1",
       "Point Def 2",
@@ -21,6 +23,7 @@ export default [
     cost: 6,
     hull: 1,
     upkeepCost: 1,
+    canGainExp: false,
     availableTechs: [
       "Point Def 1",
       "Point Def 2",
@@ -35,6 +38,8 @@ export default [
     cost: 9,
     hull: 1,
     upkeepCost: 1,
+    canGainExp: true,
+    reactThreshold: 3,
     availableTechs: [
       "DDX",
       "Scanner 1",
@@ -50,6 +55,8 @@ export default [
     cost: 12,
     hull: 2,
     upkeepCost: 2,
+    canGainExp: true,
+    reactThreshold: 3,
     availableTechs: [
       "Exploration 1",
       "Exploration 2",
@@ -63,6 +70,8 @@ export default [
     cost: 15,
     hull: 2,
     upkeepCost: 2,
+    canGainExp: true,
+    reactThreshold: 4,
     availableTechs: [
       "Fast 1",
     ],
@@ -75,6 +84,8 @@ export default [
     cost: 20,
     hull: 3,
     upkeepCost: 3,
+    canGainExp: true,
+    reactThreshold: 5,
     availableTechs: [
       "Tractor Beam",
     ],
@@ -87,6 +98,8 @@ export default [
     cost: 24,
     hull: 3,
     upkeepCost: 3,
+    canGainExp: true,
+    reactThreshold: 6,
     availableTechs: [
       "Shield Proj.",
     ],
@@ -99,6 +112,7 @@ export default [
     cost: 32,
     hull: 5,
     upkeepCost: 5,
+    canGainExp: true,
     availableTechs: [
       "Fighters",
     ],
@@ -111,6 +125,8 @@ export default [
     cost: 12,
     hull: 3,
     upkeepCost: 0,
+    canGainExp: false,
+    immovable: true,
     availableTechs: [
       "Exploration 2",
       "Scanner 1",
@@ -125,6 +141,7 @@ export default [
     cost: 1,
     hull: 0,
     upkeepCost: 0,
+    canGainExp: false,
     availableTechs: [
     ],
   },
@@ -136,6 +153,7 @@ export default [
     cost: 5,
     hull: 1,
     upkeepCost: 0,
+    canGainExp: false,
     availableTechs: [
       "Terraforming 2",
     ],
@@ -148,6 +166,7 @@ export default [
     cost: 5,
     hull: 1,
     upkeepCost: 0,
+    canGainExp: false,
     availableTechs: [
       "Terraforming 2",
     ],
@@ -160,6 +179,8 @@ export default [
     cost: 6,
     hull: 1,
     upkeepCost: 0,
+    canGainExp: false,
+    immovable: true,
     availableTechs: [
       "Exploration 2",
     ],
@@ -172,6 +193,8 @@ export default [
     cost: 6,
     hull: 1,
     upkeepCost: 1,
+    canGainExp: true,
+    reactThreshold: 5,
     availableTechs: [
       "Anti-Replicator",
       "Drop Ship",
@@ -185,6 +208,9 @@ export default [
     cost: 2,
     hull: 1,
     upkeepCost: 0,
+    canGainExp: false,
+    immovable: true,
+    unupgradable: true,
     availableTechs: [
     ],
   },
@@ -196,6 +222,9 @@ export default [
     cost: 3,
     hull: 2,
     upkeepCost: 0,
+    canGainExp: false,
+    immovable: true,
+    unupgradable: true,
     availableTechs: [
     ],
   },
@@ -207,6 +236,9 @@ export default [
     cost: 3,
     hull: 2,
     upkeepCost: 0,
+    canGainExp: false,
+    immovable: true,
+    unupgradable: true,
     availableTechs: [
     ],
   },
@@ -218,6 +250,9 @@ export default [
     cost: 4,
     hull: 2,
     upkeepCost: 0,
+    canGainExp: false,
+    immovable: true,
+    unupgradable: true,
     availableTechs: [
     ],
   },
@@ -229,6 +264,8 @@ export default [
     cost: 12,
     hull: 2,
     upkeepCost: 2,
+    canGainExp: true,
+    reactThreshold: 4,
     availableTechs: [
       "Boarding 2",
     ],
@@ -241,6 +278,8 @@ export default [
     cost: 12,
     hull: 2,
     upkeepCost: 2,
+    canGainExp: true,
+    reactThreshold: 3,
     availableTechs: [
       "RX",
       "Cloaking 2",
@@ -256,6 +295,8 @@ export default [
     cost: 12,
     hull: 1,
     upkeepCost: 1,
+    canGainExp: true,
+    reactThreshold: 5,
     availableTechs: [
     ],
   },
@@ -267,6 +308,8 @@ export default [
     cost: 20,
     hull: 3,
     upkeepCost: 3,
+    canGainExp: true,
+    reactThreshold: 5,
     availableTechs: [
       "Fast 2",
     ],
@@ -279,6 +322,8 @@ export default [
     cost: 5,
     hull: 1,
     upkeepCost: 1,
+    canGainExp: true,
+    immovable: true,
     availableTechs: [
       "Fighters 2",
       "Fighters 3",
@@ -293,6 +338,7 @@ export default [
     cost: 5,
     hull: 1,
     upkeepCost: 0,
+    canGainExp: false,
     availableTechs: [
     ],
   },
@@ -304,6 +350,8 @@ export default [
     cost: 6,
     hull: 1,
     upkeepCost: 1,
+    canGainExp: true,
+    reactThreshold: 6,
     availableTechs: [
       "Mine Sweeper 2",
       "Mine Sweeper 3",
@@ -317,6 +365,8 @@ export default [
     cost: 0,
     hull: 3,
     upkeepCost: 0,
+    canGainExp: true,
+    reactThreshold: 4,
     availableTechs: [
       "Exploration 1",
       "Exploration 2",

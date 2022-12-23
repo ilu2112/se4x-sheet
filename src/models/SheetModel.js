@@ -182,7 +182,7 @@ export default class SheetModel {
         }
       }
     }
-    this.activeProductionColumn.updateField('technologySpending', total);
+    this.activeProductionColumn.updateField("technologySpending", total);
   }
 
   @action

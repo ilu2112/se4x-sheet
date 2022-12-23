@@ -9,8 +9,12 @@ export default class UnitModel {
   @observable quantity;
   @observable attack;
   @observable defense;
+  @observable reactThreshold;
+  @observable immovable;
+  @observable unupgradable;
   @observable move;
   @observable tactic;
+  @observable canGainExperience;
   @observable experience;
   @observable technologies = [];
   @observable hull;
@@ -25,8 +29,12 @@ export default class UnitModel {
     quantity,
     attack,
     defense,
+    reactThreshold,
+    immovable,
+    unupgradable,
     move,
     tactic,
+    canGainExp,
     experience,
     technologies,
     hull,
@@ -39,8 +47,12 @@ export default class UnitModel {
     this.quantity = quantity || 1;
     this.attack = attack || 0;
     this.defense = defense || 0;
+    this.reactThreshold = reactThreshold || 99999;
+    this.immovable = immovable || false;
+    this.unupgradable = unupgradable || false;
     this.move = move || 1;
     this.tactic = tactic || 0;
+    this.canGainExp = canGainExp || false;
     this.experience = experience || 0;
     this.hull = hull || 1;
     this.upkeepCost = _.isNil(upkeepCost) ? this.quantity * this.hull : upkeepCost;
@@ -89,6 +101,10 @@ export default class UnitModel {
       this.hull = unitConfig.hull;
       this.singularUpkeepCost = unitConfig.upkeepCost;
       this.upkeepCost = this.singularUpkeepCost * this.quantity;
+      this.canGainExp = unitConfig.canGainExp;
+      this.reactThreshold = unitConfig.reactThreshold || 99999;
+      this.immovable = unitConfig.immovable;
+      this.unupgradable = unitConfig.unupgradable || false;
       this.technologies = unitConfig.availableTechs.map(
         name => new UnitTechnologyModel({ name })
       );

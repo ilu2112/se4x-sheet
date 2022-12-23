@@ -30,6 +30,13 @@ const Wrapper = styled.div`
       `}
     }
 
+    &__superscript {
+      font-size: 8px;
+      position: relative;
+      top: -4px;
+      left: 1px;
+    }
+
     &__button {
       position: absolute;
       right: 2px;
@@ -84,12 +91,19 @@ class NumberStepInput extends React.Component {
   render() {
     const {
       value,
+      superscriptThreshold,
+      superscript,
       isEditable,
     } = this.props;
     return (
       <Wrapper isEditable={ isEditable } className="nsi">
         <div className="nsi__value">
           { this.getDisplayValue() }
+          { value >= superscriptThreshold &&
+            <div className="nsi__superscript">
+              { superscript }
+            </div>
+          }
         </div>
         {isEditable &&
           <div
