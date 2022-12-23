@@ -1,7 +1,8 @@
 import { action, observable, computed } from "mobx";
 import _ from "lodash";
 import UnitTechnologyModel from "./UnitTechnologyModel";
-import unitsSettings from "../config/units";
+import { getUnitConfig } from "../config/units";
+import { sheetStore } from "./store";
 
 export default class UnitModel {
   @observable id;
@@ -44,7 +45,7 @@ export default class UnitModel {
   }) {
     this.id = id;
     this.name = name || "-";
-    this.quantity = quantity || 1;
+    this.quantity = quantity || 0;
     this.attack = attack || 0;
     this.defense = defense || 0;
     this.reactThreshold = reactThreshold || 99999;
@@ -86,37 +87,41 @@ export default class UnitModel {
   }
 
   updateName(name) {
-    if (name === "-") {
-      this.name = name;
-      this.hull = 0;
-      this.upkeepCost = 0;
-      this.technologies = [];
-      return;
-    }
     const oldUnitType = this.name.split("-")[0];
+    const oldUnitConfig = getUnitConfig(this.name);
     const newUnitType = name.split("-")[0];
+    const newUnitConfig = getUnitConfig(name);
+    
     this.name = name;
     if (oldUnitType !== newUnitType) {
-      const unitConfig = _.find(unitsSettings, s => s.type === newUnitType);
-      this.hull = unitConfig.hull;
-      this.singularUpkeepCost = unitConfig.upkeepCost;
+      this.hull = newUnitConfig.hull;
+      this.singularUpkeepCost = newUnitConfig.upkeepCost;
       this.upkeepCost = this.singularUpkeepCost * this.quantity;
-      this.canGainExp = unitConfig.canGainExp;
-      this.reactThreshold = unitConfig.reactThreshold || 99999;
-      this.immovable = unitConfig.immovable;
-      this.unupgradable = unitConfig.unupgradable || false;
-      this.technologies = unitConfig.availableTechs.map(
+      this.canGainExp = newUnitConfig.canGainExp;
+      this.reactThreshold = newUnitConfig.reactThreshold || 99999;
+      this.immovable = newUnitConfig.immovable;
+      this.unupgradable = newUnitConfig.unupgradable || false;
+      this.technologies = newUnitConfig.availableTechs.map(
         name => new UnitTechnologyModel({ name })
       );
     }
+
+    const oldCost = this.quantity * oldUnitConfig.cost;
+    const newCost = this.quantity * newUnitConfig.cost;
+    const costDelta = newCost - oldCost;
+    sheetStore.updateUnitSpendingsIfNeeded(costDelta);
   }
 
   updateQuantity(quantity) {
     const wasUpkeepCostUnmodified = this.isUpkeepCostUnmodified();
+    const delta = quantity - this.quantity;
     this.quantity = quantity;
     if (wasUpkeepCostUnmodified) {
       this.upkeepCost = this.singularUpkeepCost * this.quantity;
     }
+    const unitConfig = getUnitConfig(this.name);
+    const cost = unitConfig.cost * delta;
+    sheetStore.updateUnitSpendingsIfNeeded(cost);
   }
 
   @action

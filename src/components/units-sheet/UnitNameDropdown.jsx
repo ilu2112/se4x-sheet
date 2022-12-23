@@ -58,7 +58,6 @@ class UnitNameDropdown extends React.Component {
       <Wrapper>
         {isEditable &&
           <select value={ safeValue } onChange={ this.handleChange.bind(this) }>
-            <option value='-'>-</option>
             {dropdownOptions.map(name =>
               <option key={ name } value={ name }>
                 { name }

@@ -1,4 +1,4 @@
-export default [
+const unitsSettings = [
   {
     type: "SC",
     name: "Scout",
@@ -373,4 +373,28 @@ export default [
       "Fast BC",
     ],
   },
+  {
+    type: "-",
+    name: "-",
+    firstTokenIndex: 1,
+    noOfTokens: 1,
+    cost: 0,
+    hull: 0,
+    upkeepCost: 0,
+    canGainExp: false,
+    immovable: true,
+    unupgradable: true,
+    availableTechs: [
+    ],
+  },
 ];
+
+const getUnitConfig = name => {
+  const unitType = name.split("-")[0] || "-";
+  return _.find(unitsSettings, s => s.type === unitType);
+}
+
+export default unitsSettings;
+export { 
+  getUnitConfig
+};

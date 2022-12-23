@@ -97,7 +97,7 @@ class UnitRow extends React.Component {
         <UnitCell>
           <NumberStepInput
             value={ quantity }
-            minValue={ 1 }
+            minValue={ 0 }
             maxValue={ 6 }
             isEditable={ isEditable }
             updateFunction={ value => updateField("quantity", value) }

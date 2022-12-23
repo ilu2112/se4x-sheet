@@ -6,6 +6,7 @@ import {
   BsPencilSquare,
   BsFillPlusSquareFill,
   BsFillCheckSquareFill,
+  BsExclamationSquareFill,
 } from "react-icons/bs";
 import { ReactSortable } from "react-sortablejs";
 import _ from "lodash";
@@ -14,6 +15,7 @@ import IconButton from "./common/IconButton";
 import TitleBar from "./common/TitleBar";
 import UnitLabel from "./units-sheet/UnitLabel";
 import UnitRow from "./units-sheet/UnitRow";
+import Toggler from "./common/Toggler";
 import { sheetStore } from "../models/store";
 
 const Wrapper = styled.div`
@@ -112,6 +114,8 @@ class UnitsSheet extends React.Component {
     const {
       units,
       totalUpkeepCost,
+      shouldSyncUnitSpendings,
+      toggleShouldSyncUnitSpendings,
     } = sheetStore;
     const {
       allUnitsEditable,
@@ -119,6 +123,11 @@ class UnitsSheet extends React.Component {
     return (
       <Wrapper>
         <TitleBar title="Units">
+        <Toggler
+          icon={ <BsExclamationSquareFill /> }
+          enabled={ shouldSyncUnitSpendings }
+          onClick={ toggleShouldSyncUnitSpendings }
+        />
         <IconButton
             icon={ allUnitsEditable ? <BsFillCheckSquareFill /> : <BsPencilSquare /> }
             onClick={ this.onAllUnitEditableClick.bind(this) }

@@ -7,6 +7,7 @@ import TechnologyModel from "./TechnologyModel";
 import settings from "../config/settings";
 import { TECH_LEVEL_STATE } from "./enums";
 import UnitModel from "./UnitModel";
+import { getUnitConfig } from "../config/units";
 
 export default class SheetModel {
   @observable version;
@@ -15,6 +16,7 @@ export default class SheetModel {
   @observable units = [];
   @observable activeProductionColumn;
   @observable shouldSyncTechSpendings;
+  @observable shouldSyncUnitSpendings;
 
   constructor(initialState) {
     if (_.isEmpty(initialState)) {
@@ -39,6 +41,8 @@ export default class SheetModel {
     this.reorderUnits = this.reorderUnits.bind(this);
     this.copyUnit = this.copyUnit.bind(this);
     this.setAllUnitsEditable = this.setAllUnitsEditable.bind(this);
+    this.toggleShouldSyncUnitSpendings = this.toggleShouldSyncUnitSpendings.bind(this);
+    this.updateUnitSpendingsIfNeeded = this.updateUnitSpendingsIfNeeded.bind(this);
   }
 
   @action
@@ -64,28 +68,18 @@ export default class SheetModel {
     this.productionColumns[0].isActive = true;
     this.activeProductionColumn = this.productionColumns[0];
     this.shouldSyncTechSpendings = false;
+    this.shouldSyncUnitSpendings = false;
     this.version = settings.SHEET_VERSION;
 
     this.units = [];
-    this.addNewUnit();
-    this.units[0].updateField("name", "SY-1");
-    this.units[0].quantity = 4;
-    this.units[0].isEditable = false;
-    this.addNewUnit();
-    this.units[1].updateField("name", "Miner-1");
-    this.units[1].isEditable = false;
-    this.addNewUnit();
-    this.units[2].updateField("name", "SC-1");
-    this.units[2].isEditable = false;
-    this.addNewUnit();
-    this.units[3].updateField("name", "SC-2");
-    this.units[3].isEditable = false;
-    this.addNewUnit();
-    this.units[4].updateField("name", "SC-3");
-    this.units[4].isEditable = false;
-    this.addNewUnit();
-    this.units[5].updateField("name", "FLAG");
-    this.units[5].isEditable = false;
+    const startingUnits = ["SY-1", "Miner-1", "SC-1", "SC-2", "SC-3", "FLAG"];
+    for (let i = 0; i < startingUnits.length; i++) {
+      this.addNewUnit();
+      const name = startingUnits[i];
+      this.units[i].updateField("name", name);
+      this.units[i].updateField("quantity", name === "SY-1" ? 4 : 1);
+      this.units[i].isEditable = false;
+    }
   }
 
   _setState(state) {
@@ -114,6 +108,7 @@ export default class SheetModel {
 
     this.activeProductionColumn = _.find(this.productionColumns, c => c.isActive);
     this.shouldSyncTechSpendings = state.shouldSyncTechSpendings || false;
+    this.shouldSyncUnitSpendings = state.shouldSyncUnitSpendings || false;
     this.version = state.version;
 
     this.units = [];
@@ -178,6 +173,11 @@ export default class SheetModel {
   }
 
   @action
+  toggleShouldSyncUnitSpendings() {
+    this.shouldSyncUnitSpendings = !this.shouldSyncUnitSpendings;
+  }
+
+  @action
   syncTechSpendingsIfNeeded() {
     if (!this.shouldSyncTechSpendings) {
       return;
@@ -214,6 +214,10 @@ export default class SheetModel {
 
   @action
   removeUnit(id) {
+    const unitToRemove = _.find(this.units, u => u.id === id);
+    const unitConfig = getUnitConfig(unitToRemove.name);
+    const costDetla = unitToRemove.quantity * unitConfig.cost;
+    this.updateUnitSpendingsIfNeeded(-costDetla);
     this.units = _.filter(this.units, u => u.id !== id);
   }
 
@@ -241,6 +245,14 @@ export default class SheetModel {
   setAllUnitsEditable(value) {
     for (let unit of this.units) {
       unit.isEditable = value;
+    }
+  }
+
+  @action
+  updateUnitSpendingsIfNeeded(delta) {
+    if (this.shouldSyncUnitSpendings) {
+      const purchases = this.activeProductionColumn.purchases + delta;
+      this.activeProductionColumn.updateField("purchases", purchases);
     }
   }
 }
