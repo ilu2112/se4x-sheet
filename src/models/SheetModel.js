@@ -205,6 +205,8 @@ export default class SheetModel {
         move: 1,
         experience: 0,
         technologies: [],
+        immovable: true,
+        unupgradable: true,
         hull: 0,
         upkeepCost: 0,
         isEditable: true,
