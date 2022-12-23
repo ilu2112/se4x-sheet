@@ -9,6 +9,7 @@ import { TECH_LEVEL_STATE } from "./enums";
 import UnitModel from "./UnitModel";
 
 export default class SheetModel {
+  @observable version;
   @observable technologies = [];
   @observable productionColumns = [];
   @observable units = [];
@@ -63,8 +64,9 @@ export default class SheetModel {
     this.productionColumns[0].isActive = true;
     this.activeProductionColumn = this.productionColumns[0];
     this.shouldSyncTechSpendings = false;
-    this.units = [];
+    this.version = settings.SHEET_VERSION;
 
+    this.units = [];
     this.addNewUnit();
     this.units[0].updateField("name", "SY-1");
     this.units[0].quantity = 4;
@@ -87,6 +89,11 @@ export default class SheetModel {
   }
 
   _setState(state) {
+    if (state.version !== settings.SHEET_VERSION) {
+      this.reset();
+      console.log("Invalid sheet version - resetting!");
+      return;
+    }
     this.technologies = [];
     for (let techConfig of state.technologies) {
       this.technologies.push(
@@ -107,6 +114,7 @@ export default class SheetModel {
 
     this.activeProductionColumn = _.find(this.productionColumns, c => c.isActive);
     this.shouldSyncTechSpendings = state.shouldSyncTechSpendings || false;
+    this.version = state.version;
 
     this.units = [];
     for (let unit of state.units) {
